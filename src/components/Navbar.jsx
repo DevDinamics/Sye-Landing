@@ -134,14 +134,15 @@ export default function Navbar() {
 
       {/* NAVBAR PRINCIPAL CORREGIDO Y CENTRADO */}
       <motion.nav
-        initial={{ y: -100, x: '-50%', opacity: 0 }} // Añadimos x: '-50%' aquí
-        animate={{ y: 0, x: '-50%', opacity: 1 }}    // Añadimos x: '-50%' aquí
+        initial={{ y: -100, x: '-50%', opacity: 0 }} 
+        animate={{ y: 0, x: '-50%', opacity: 1 }}    
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         style={{
+          boxSizing: 'border-box', // <-- ESTA ES LA PROPIEDAD QUE LO ARREGLA TODO
           position: 'fixed',
           top: '20px',
-          left: '50%', // Cambiamos left a 50% para posicionar el eje en medio de la pantalla
-          right: 'auto', // Limpiamos el right anterior
+          left: '50%', 
+          right: 'auto', 
           width: '95%',
           maxWidth: '1200px',
           height: '64px',
