@@ -1,0 +1,42 @@
+---
+// Importa tus componentes 
+// Ajusta las rutas según donde guardaste los componentes
+import PoliticasCalidadComponent from '../components/PoliticasCalidad.jsx'; 
+import Navbar from '../components/Navbar.jsx'; 
+import Footer from '../components/Footer.jsx';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título de la página actualizado -->
+  <title>Política de Calidad | SYE - Calidad y Mejora Continua</title>
+  <!-- Meta descripción opcional para SEO -->
+  <meta name="description" content="Política de Calidad de SYE Software, enfocada en la excelencia, estandarización y satisfacción del cliente basada en ISO 9001:2015.">
+  <style is:global>
+    /* Reset total y tipografía forzada estilo Apple */
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #050505;
+      width: 100%;
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+<body>
+  {/* Navbar interactivo */}
+  <Navbar client:load /> 
+
+  {/* Tu nueva sección PRO con la Política de Calidad */}
+  <PoliticasCalidadComponent client:load />
+
+  {/* Footer */}
+  <Footer client:load />
+</body>
+</html>

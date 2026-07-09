@@ -1,0 +1,44 @@
+---
+import Navbar from '../components/Navbar.jsx'; 
+import HeroNube from '../Services/HeroNube.jsx'; 
+import NubeFeatures from '../Services/NubeFeatures.jsx';
+import CallToAction from '../components/CallToAction.jsx';
+import Footer from '../components/Footer.jsx';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NUBE | SYE - Infraestructura y Modernización</title>
+  <meta name="description" content="Diseñamos y operamos arquitecturas en la Nube que sostienen la operación institucional.">
+  
+  <style is:global>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #050505;
+      width: 100%;
+      /* Eliminamos height: 100% para que la altura sea natural según el contenido */
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      color: white;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <div data-navbar-theme="dark">
+    <Navbar client:load /> 
+    <main>
+      <HeroNube client:load />
+      <NubeFeatures client:load />
+      <CallToAction client:load />
+    </main>
+
+   
+    <Footer client:load />
+  </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+---
+import QopaComponent from '../Services/Qopa.jsx';
+import Navbar from '../components/Navbar.jsx'; 
+import QopaFeatures from '../Services/QopaFeatures.jsx';
+import CallToAction from '../components/CallToAction.jsx';
+import Footer from '../components/Footer.jsx';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QOPA Framework | SYE</title>
+  <style is:global>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #050505;
+      width: 100%;
+      /* Eliminamos height: 100% para que la altura sea natural según el contenido */
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      color: white;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <Navbar client:load /> 
+  <QopaComponent client:load />
+  <QopaFeatures client:load />
+  <CallToAction client:load />
+  <Footer client:load />
+</body>
+</html>

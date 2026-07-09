@@ -1,0 +1,38 @@
+---
+// Importa tus componentes usando la ruta relativa correcta
+import PoliticasAntisobornoComponent from '../components/PoliticasAntisoborno.jsx'; 
+import Navbar from '../components/Navbar.jsx'; 
+import Footer from '../components/Footer.jsx';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política Antisoborno | SYE - Ética y Transparencia</title>
+  <meta name="description" content="Política Antisoborno de SYE Software, fundamentada en la ética, honestidad y cumplimiento del estándar ISO 37001:2016.">
+  <style is:global>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #050505;
+      width: 100%;
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+<body>
+  {/* Navbar interactivo */}
+  <Navbar client:load /> 
+
+  {/* Componente con el acordeón interactivo */}
+  <PoliticasAntisobornoComponent client:load />
+
+  {/* Footer */}
+  <Footer client:load />
+</body>
+</html>

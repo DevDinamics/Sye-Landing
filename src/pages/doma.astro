@@ -1,0 +1,43 @@
+---
+// Salimos de "pages" con "../" y entramos a "Services" o "components"
+import DevSpaceHero from '../Services/Herodoma.jsx'; 
+import Navbar from '../components/Navbar.jsx'; 
+import DomaFeatures from '../Services/DomaFeatures.jsx'; 
+import CallToAction from '../components/CallToAction.jsx';
+import Footer from '../components/Footer.jsx';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doma | SYE</title>
+  <style is:global>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #050505;
+      width: 100%;
+      /* Eliminamos height: 100% para que la altura sea natural según el contenido */
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      color: white;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  {/* Navbar interactivo */}
+  <Navbar client:load /> 
+
+  {/* Tu nueva sección PRO con las partículas 3D */}
+  <DevSpaceHero client:load />
+
+  <DomaFeatures client:load />
+  <CallToAction client:load />
+
+  {/* Footer */}
+  <Footer client:load />
+</body>
+</html>

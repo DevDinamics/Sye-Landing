@@ -1,0 +1,53 @@
+---
+// Importaciones de los componentes globales
+import Navbar from '../components/Navbar.jsx'; 
+import HeroFabrica from '../Services/HeroFabrica.jsx'; // El componente nuevo que creamos arriba
+import FabricaFeatures from '../Services/FabricaFeatures.jsx';
+import CallToAction from '../components/CallToAction.jsx';
+import Footer from '../components/Footer.jsx';
+
+// Nota: En el futuro, si quieres agregarle una sección de características/beneficios abajo con imagen
+// similar a la de DOMA o DevSpace, la puedes importar aquí.
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fábrica de Software | SYE - Gestión de Desarrollo Institucional</title>
+  <meta name="description" content="Diseñamos y desarrollamos sistemas y plataformas integradas a la operación diaria de instituciones públicas.">
+  
+  <style is:global>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #050505;
+      width: 100%;
+      /* Eliminamos height: 100% para que la altura sea natural según el contenido */
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      color: white;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  {/* Data-theme oscuro para asegurar que el Navbar tenga contraste */}
+  <div data-navbar-theme="dark">
+    {/* Navbar interactivo */}
+    <Navbar client:load /> 
+    
+    <main>
+      {/* Tu nuevo Hero que hereda la fluidez del DotField */}
+      <HeroFabrica client:load />
+
+      <FabricaFeatures client:load />
+      <CallToAction client:load />
+    </main>
+  
+    {/* Footer */}
+    <Footer client:load />
+  </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+/* El contenedor principal debe ocupar el 100% para que el Canvas sepa cuánto medir */
+.dot-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+/* El wrap que envuelve al canvas */
+.dot-grid__wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* El canvas donde se dibujan los puntos */
+.dot-grid__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Crucial para no bloquear clics */
+}

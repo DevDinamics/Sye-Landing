@@ -1,0 +1,37 @@
+---
+import LineaDenunciaComponent from '../components/LineaDenuncia.jsx'; 
+import Navbar from '../components/Navbar.jsx'; 
+import Footer from '../components/Footer.jsx';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Línea de Denuncia | SYE - Canal Seguro</title>
+  <meta name="description" content="Canal seguro y confidencial de SYE Software para reportar conductas que vulneren nuestros principios éticos.">
+  <style is:global>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #050505;
+      width: 100%;
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+<body>
+  {/* Navbar */}
+  <Navbar client:load /> 
+
+  {/* Componente con el iframe enmarcado */}
+  <LineaDenunciaComponent client:load />
+
+  {/* Footer */}
+  <Footer client:load />
+</body>
+</html>

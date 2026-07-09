@@ -1,0 +1,54 @@
+---
+// Importaciones de tus componentes
+import Navbar from '../components/Navbar.jsx'; 
+import HeroDatos from '../Services/HeroDatos.jsx'; 
+import DatosFeatures from '../Services/DatosFeatures.jsx'; 
+import CallToAction from '../components/CallToAction.jsx';
+import Footer from '../components/Footer.jsx';
+
+// Nota: Si más adelante creas un componente "DatosFeatures.jsx" (como hicimos con DOMA o QOPA)
+// para poner las características abajo, puedes importarlo aquí también.
+// import DatosFeatures from '../components/DatosFeatures.jsx';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datos | SYE - Gobernanza e Inteligencia Institucional</title>
+  <meta name="description" content="Integramos, estructuramos y analizamos información institucional para transformar datos dispersos en inteligencia útil para la gestión pública.">
+  
+  <style is:global>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #050505;
+      width: 100%;
+      /* Eliminamos height: 100% para que la altura sea natural según el contenido */
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      color: white;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  {/* Agregamos el data-theme para que el Navbar sepa que está sobre un fondo oscuro */}
+  <div data-navbar-theme="dark">
+    {/* Navbar interactivo */}
+    <Navbar client:load /> 
+    
+    <main>
+      {/* Tu nuevo Hero interactivo con el DotGrid de fondo */}
+      <HeroDatos client:load />
+      
+      <DatosFeatures client:load /> 
+      <CallToAction client:load />
+    </main>
+  
+    {/* Footer */}
+    <Footer client:load />
+  </div>
+</body>
+</html>

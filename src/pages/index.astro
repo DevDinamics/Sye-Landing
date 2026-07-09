@@ -1,0 +1,36 @@
+---
+import Navbar from '../components/Navbar.jsx';
+import Hero from '../components/Hero.jsx';
+import ServicesGrid from '../components/ServicesGrid.jsx';
+import Partners from '../components/Partners.jsx';
+import Footer from '../components/Footer.jsx';
+import CasoExito from '../components/CasoExito.jsx';
+import Certifications from '../components/Certifications.jsx';
+import CallToAction from '../components/CallToAction.jsx';
+---
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/Simbolo_sye_.png" />
+        <meta name="viewport" content="width=device-width" />
+        <title>SYE | Software Passion</title>
+        <style>
+          /* Un reseteo global básico para que se vea pulido */
+          * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
+          body { background-color: #000; overflow-x: hidden; }
+        </style>
+    </head>
+    <body>
+        <!-- Usamos client:load para que React hidrate los componentes inmediatamente y las animaciones corran -->
+        <Navbar client:load />
+        <Hero client:load />
+		<ServicesGrid client:load />
+		<Partners client:load />
+		<CasoExito client:load />
+    <Certifications client:load />
+    <CallToAction client:load />
+		<Footer client:load />
+
+    </body>
+</html>
