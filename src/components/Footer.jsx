@@ -65,42 +65,35 @@ export default function Footer() {
           transform: translateY(-2px);
         }
 
-        /* 👇 TEXTO GIGANTE ESTILO HOWITZER 👇 */
+        /* 👇 TEXTO GIGANTE ESTILO HOWITZER CORREGIDO 👇 */
         .big-sye-text {
-          /* 👇 AJUSTA ESTOS VALORES PARA HACERLO MÁS PEQUEÑO O GRANDE 👇 */
-          font-size: clamp(3.5rem, 13vw, 9.5rem);
-
+          /* Escalado dinámico ajustado para que quepa en 1 sola línea */
+          font-size: clamp(2.5rem, 11vw, 9.5rem);
+          white-space: nowrap; /* PREVIENE EL SALTO DE LÍNEA QUE ROMPÍA EL DISEÑO */
+          
           font-weight: 600;
           font-family: "Arial", "Helvetica Neue", sans-serif;
-          line-height: 0.8;
+          line-height: 1; /* Restaurado a 1 para evitar choques si algo falla */
           letter-spacing: 0.01em;
           text-align: center;
-          
-          /* TRUCO PRO: Si ves líneas cruzadas dentro de la "A" o la "W", 
-             cambia 'transparent' por '#050505' para rellenarlas del color del fondo */
           color: transparent;
-
-          /* Contorno visible y definido */
           -webkit-text-stroke: 1.8px rgba(255, 255, 255, 0.45);
 
-          /* 👇 EL DEGRADADO SUAVE ESTILO HOWITZER 👇 */
-          /* black 45%: Empieza a difuminarse casi a la mitad de la letra */
-          /* transparent 95%: Se vuelve 100% invisible justo antes del corte */
+          /* Degradado extendido un poco más para pantallas pequeñas */
           -webkit-mask-image: linear-gradient(
             to bottom,
             black 0%,
-            transparent 65%
+            transparent 75%
           );
           mask-image: linear-gradient(
             to bottom,
             black 0%,
-            transparent 65%
+            transparent 75%
           );
 
           user-select: none;
-          margin-top: 2rem;
-          margin-bottom: 0rem;
-          transform: translateY(30px); 
+          margin-top: 3rem; 
+          transform: translateY(20px); /* Ajustado para que no choque con la barra inferior */
         }
 
         .footer-bottom-bar {
@@ -126,10 +119,15 @@ export default function Footer() {
             gap: 3rem;
             width: 100%;
           }
+          .big-sye-text {
+            transform: translateY(10px); /* En móviles empujamos un poco menos hacia abajo */
+            margin-top: 2rem;
+          }
           .footer-bottom-bar {
             flex-direction: column;
             text-align: center;
             gap: 1.5rem;
+            padding: 1.5rem 1rem;
           }
         }
       `}</style>
@@ -144,35 +142,29 @@ export default function Footer() {
             Diseñamos y desarrollamos arquitecturas en la Nube que sostienen la operación institucional bajo criterios de alta disponibilidad.
           </p>
           
-          {/* Iconos Sociales Estilo Howitzer */}
+          {/* Iconos Sociales */}
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            {/* LinkedIn */}
             <a href="#" className="social-icon-btn" aria-label="LinkedIn">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
             </a>
-            {/* Instagram */}
             <a href="#" className="social-icon-btn" aria-label="Instagram">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </a>
-            {/* YouTube */}
             <a href="#" className="social-icon-btn" aria-label="YouTube">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
             </a>
-            {/* Facebook */}
             <a href="#" className="social-icon-btn" aria-label="Facebook">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
             </a>
-            {/* X (Twitter) */}
             <a href="#" className="social-icon-btn" aria-label="X">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" /></svg>
             </a>
           </div>
         </div>
 
-        {/* Lado Derecho: Columnas de Enlaces (Mapeado de tu info de Contacto original) */}
+        {/* Lado Derecho: Columnas de Enlaces */}
         <div className="footer-links-grid">
           
-          {/* Columna 1: Teléfonos */}
           <div className="footer-col">
             <h4>Contacto</h4>
             <a href="tel:+525580075348" className="footer-link">
@@ -185,7 +177,6 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Columna 2: Correos */}
           <div className="footer-col">
             <h4>Correos</h4>
             <a href="mailto:info@syesoftware.com" className="footer-link">
@@ -198,7 +189,6 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Columna 3: Empresa (Agregada para mantener la estructura de 3 columnas de Howitzer) */}
           <div className="footer-col">
             <h4>Empresa</h4>
             <a href="/servicios" className="footer-link">Servicios</a>
@@ -220,7 +210,8 @@ export default function Footer() {
           <div>
             © SYE Software S.A de C.V. 2009 — 2026 Todos los derechos reservados. 
           </div>
-          <div style={{ display: 'flex', gap: '1.5rem' }}>
+          {/* Se ajustó el flex para que los enlaces se acomoden en móviles si no caben */}
+          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <a href="/seguridad" className="footer-link" style={{ fontSize: '0.85rem' }}>Seguridad</a>
             <a href="/terminos" className="footer-link" style={{ fontSize: '0.85rem' }}>Términos de servicio</a>
             <a href="/privacidad" className="footer-link" style={{ fontSize: '0.85rem' }}>Privacidad</a>
