@@ -7,30 +7,71 @@ import Footer from '../components/Footer.jsx';
 import CasoExito from '../components/CasoExito.jsx';
 import Certifications from '../components/Certifications.jsx';
 import CallToAction from '../components/CallToAction.jsx';
+
+// ─── VARIABLES SEO DINÁMICAS ───
+// Centralizamos esto aquí para que si cambias algo, se actualice en todas las etiquetas
+const title = "SYE Software | Soluciones Tecnológicas y Transformación Digital";
+const description = "Diseñamos y operamos arquitecturas en la Nube, Fábrica de Software e Inteligencia Artificial para la transformación y operación institucional.";
+const siteUrl = "https://www.syesoftware.com"; // Cambia esto cuando tengas el dominio final
+const ogImage = `${siteUrl}/portada-doma.jpg`; // Recomiendo una imagen 1200x630px para que luzca épica en redes
 ---
 
 <html lang="es">
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/Simbolo_sye_.png" />
-        <meta name="viewport" content="width=device-width" />
-        <title>SYE | Software Passion</title>
+        <link rel="icon" type="image/png" href="/Simbolo_sye_.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <!-- 🚀 SEO TÉCNICO BÁSICO -->
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="keywords" content="Fábrica de Software, Cloud, Nube, Inteligencia Artificial, DOMA, QOPA, Datos, SYE Software" />
+        <meta name="author" content="SYE Software" />
+        <link rel="canonical" href={siteUrl} />
+        <meta name="theme-color" content="#050505" />
+
+        <!-- 🌐 OPEN GRAPH (Para tarjetas hermosas en Facebook, LinkedIn, WhatsApp) -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={siteUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:site_name" content="SYE Software" />
+
+        <!-- 🐦 TWITTER CARDS (Para despliegues perfectos en X) -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={siteUrl} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
+
+        <!-- 📊 GOOGLE ANALYTICS 4 (GA4) -->
+        <!-- IMPORTANTE: El atributo is:inline obliga a Astro a inyectar el script tal cual sin modificarlo -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" is:inline></script>
+        <script is:inline>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          // 👉 REEMPLAZA "G-XXXXXXXXXX" CON EL ID REAL DE TU PROPIEDAD DE GA4
+          gtag('config', 'G-XXXXXXXXXX');
+        </script>
+
         <style>
-          /* Un reseteo global básico para que se vea pulido */
+          /* Reseteo global ajustado al Dark Mode de SYE */
           * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
-          body { background-color: #000; overflow-x: hidden; }
+          body { background-color: #050505; color: #ffffff; overflow-x: hidden; }
         </style>
     </head>
     <body>
         <!-- Usamos client:load para que React hidrate los componentes inmediatamente y las animaciones corran -->
         <Navbar client:load />
         <Hero client:load />
-		<ServicesGrid client:load />
-		<Partners client:load />
-		<CasoExito client:load />
-    <Certifications client:load />
-    <CallToAction client:load />
-		<Footer client:load />
-
+        <ServicesGrid client:load />
+        <Partners client:load />
+        <CasoExito client:load />
+        <Certifications client:load />
+        <CallToAction client:load />
+        <Footer client:load />
     </body>
 </html>

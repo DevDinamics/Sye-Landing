@@ -104,21 +104,54 @@ export default function DomaFeatures() {
             height: '600px',
             borderRadius: '32px',
             backgroundColor: '#18181b',
-            /* ¡AQUÍ PONES LA RUTA DE TU IMAGEN DEL AVATAR DE DOMA! */
-            backgroundImage: 'url("/ruta-a-tu-imagen-de-doma.jpg")', 
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
             boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
             border: '1px solid rgba(255, 255, 255, 0.05)'
           }}
         >
-          {/* Overlay oscuro (gradiente) para que el contenido resalte sin tapar a la chica */}
+          {/* ─── WRAPPER DEL VIDEO (recorte solo aquí) ─── */}
           <div style={{
             position: 'absolute',
             inset: 0,
             borderRadius: '32px',
-            background: 'linear-gradient(to right, rgba(5,5,5,0.7) 0%, rgba(5,5,5,0.1) 100%)'
-          }} />
+            overflow: 'hidden'
+          }}>
+            {/* ¡AQUÍ PONES LA RUTA DE TU VIDEO DEL AVATAR DE DOMA! */}
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{
+                position: 'absolute',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover'
+              }}
+            >
+              <source src="/IA-doma2.mp4" type="video/mp4" />
+            </video>
+
+            {/* Overlay oscuro (gradiente) para que el contenido resalte sin tapar a la chica */}
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(to right, rgba(5,5,5,0.7) 0%, rgba(5,5,5,0.1) 100%)'
+            }} />
+
+            {/* Parche para tapar la marca de agua (centro-inferior del video) */}
+            <div style={{
+              position: 'absolute',
+              bottom: '15%',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '140px',
+              height: '140px',
+              background: 'radial-gradient(circle, rgba(5,5,5,0.65) 0%, rgba(5,5,5,0) 70%)',
+              pointerEvents: 'none',
+              zIndex: 2
+            }} />
+          </div>
 
           {/* ─── TARJETA FLOTANTE DE BENEFICIOS ─── */}
           <motion.div 
@@ -150,7 +183,6 @@ export default function DomaFeatures() {
             }}>
               Beneficios
             </h3>
-            
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
               {beneficiosList.map((beneficio, index) => (
                 <li 
