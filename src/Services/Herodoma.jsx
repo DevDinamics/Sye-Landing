@@ -1,5 +1,5 @@
 import React from 'react';
-import MagicRings from './MagicRings';
+import MagicRings from './Temporal';
 
 const BRAND = {
   blue: "#404497",
