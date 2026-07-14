@@ -1,24 +1,85 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import DotField from './DotField'; // Reutilizamos el mismo fondo interactivo y fluido
+import DotField from './DotField';
 
 export default function HeroFabrica() {
   return (
-    <section style={{
-      position: 'relative',
-      width: '100%',
-      minHeight: '100vh',
-      backgroundColor: '#050505',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      overflow: 'hidden',
-      fontFamily: "-apple-system, BlinkMacSystemFont, 'Inter', sans-serif",
-    }}>
+    <section 
+      className="hero-fabrica-container"
+      style={{
+        position: 'relative',
+        width: '100%',
+        minHeight: '100vh',
+        backgroundColor: '#050505',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        /* Aplicamos Montserrat (Primaria) como base general */
+        fontFamily: "var(--font-primary)",
+      }}
+    >
       
-      {/* ─── REUTILIZACIÓN DEL DOT FIELD (FONDO INTERACTIVO) ─── */}
+      {/* ─── ESTILOS RESPONSIVOS AVANZADOS ─── */}
+      <style>{`
+        .hero-fabrica-content {
+          position: relative;
+          z-index: 10;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding: 0 1.5rem;
+          max-width: 1000px;
+          margin-top: 6rem;
+          margin-bottom: 4rem;
+        }
+
+        .fabrica-title {
+          font-size: clamp(2.8rem, 8vw, 5.5rem);
+          font-weight: 800;
+          color: #ffffff;
+          margin: 0 0 0.5rem 0;
+          line-height: 1.1;
+          letter-spacing: -0.04em;
+        }
+
+        .fabrica-subtitle {
+          font-size: clamp(1.5rem, 5vw, 2.8rem);
+          font-weight: 700;
+          color: #75bf40;
+          margin: 0 0 2.5rem 0;
+          line-height: 1.2;
+          letter-spacing: -0.02em;
+        }
+
+        .fabrica-paragraphs {
+          font-size: clamp(1rem, 2.5vw, 1.2rem);
+          color: #d4d4d8;
+          line-height: 1.7;
+          max-width: 900px;
+          margin: 0 auto 3.5rem auto;
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        /* Ajustes específicos para móviles */
+        @media (max-width: 768px) {
+          .hero-fabrica-content {
+            margin-top: 4rem;
+            padding: 0 1.25rem;
+          }
+          .fabrica-paragraphs {
+            text-align: justify;
+            text-align-last: center;
+          }
+        }
+      `}</style>
+
+      {/* ─── REUTILIZACIÓN DEL DOT FIELD ─── */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-      <DotField
+        <DotField
           dotRadius={2.5}
           dotSpacing={14}
           cursorRadius={500}
@@ -30,8 +91,6 @@ export default function HeroFabrica() {
           gradientTo="rgba(255, 255, 255, 0.1)"
           glowColor="rgba(117, 191, 64, 0.3)"
         />
-        
-        {/* Máscara de gradiente radial para oscurecer las esquinas */}
         <div style={{
           position: 'absolute',
           inset: 0,
@@ -40,21 +99,10 @@ export default function HeroFabrica() {
         }} />
       </div>
 
-      {/* ─── CONTENIDO CENTRAL (DISEÑO ALINEADO A TU CAPTURA) ─── */}
-      <div style={{
-        position: 'relative',
-        zIndex: 10,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-        padding: '0 2rem',
-        maxWidth: '1000px',
-        marginTop: '6rem', // Espacio para no chocar con el Navbar
-        marginBottom: '4rem'
-      }}>
+      {/* ─── CONTENIDO CENTRAL ─── */}
+      <div className="hero-fabrica-content">
         
-        {/* Badge / Etiqueta de la parte superior */}
+        {/* Badge / Etiqueta */}
         <motion.div
           initial={{ opacity: 0, y: 20 }} 
           animate={{ opacity: 1, y: 0 }} 
@@ -71,85 +119,65 @@ export default function HeroFabrica() {
             marginBottom: '2rem'
           }}
         >
-          {/* Icono minimalista de código / desarrollo */}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#75bf40" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="16 18 22 12 16 6"></polyline>
             <polyline points="8 6 2 12 8 18"></polyline>
           </svg>
-          <span style={{ color: '#ffffff', fontWeight: 600, fontSize: '0.85rem', letterSpacing: '0.15em' }}>
+          <span style={{ 
+            color: '#ffffff', 
+            fontWeight: 600, 
+            fontSize: '0.85rem', 
+            letterSpacing: '0.15em',
+            /* Aplicamos Brandon Grotesque (Secundaria) al badge para contraste */
+            fontFamily: 'var(--font-secondary)' 
+          }}>
             FÁBRICA DE SOFTWARE
           </span>
         </motion.div>
 
-        {/* Título Principal */}
+        {/* Títulos con Montserrat (heredada de var(--font-primary)) */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-          style={{ 
-            fontSize: 'clamp(3.5rem, 7vw, 5.5rem)', 
-            fontWeight: 800, 
-            color: '#ffffff', 
-            margin: '0 0 0.5rem 0', 
-            lineHeight: 1.1, 
-            letterSpacing: '-0.04em' 
-          }}
+          className="fabrica-title"
         >
           Fábrica de Software
         </motion.h1>
 
-        {/* Subtítulo Verde de tu captura */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          style={{ 
-            fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', 
-            fontWeight: 700, 
-            color: '#75bf40', // Verde SYE exacto
-            margin: '0 0 2.5rem 0', 
-            lineHeight: 1.2, 
-            letterSpacing: '-0.02em' 
-          }}
+          className="fabrica-subtitle"
         >
           Gestión de Desarrollo Institucional
         </motion.h2>
 
-        {/* Cuerpo del Texto (Párrafos exactos de la captura) */}
         <motion.div
           initial={{ opacity: 0, y: 30 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          style={{ 
-            fontSize: '1.2rem', 
-            color: '#d4d4d8', 
-            lineHeight: 1.7, 
-            maxWidth: '900px', 
-            margin: '0 auto 3.5rem auto',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1.5rem' // Separación entre ambos párrafos
-          }}
+          className="fabrica-paragraphs"
         >
           <p style={{ margin: 0 }}>
             Diseñamos y desarrollamos sistemas y plataformas integradas a la operación diaria de instituciones públicas, alineándonos a sus marcos normativos y estructuras institucionales vigentes.
           </p>
-          <p style={{ margin: 0, color: '#a1a1aa', fontSize: '1.15rem' }}>
+          <p style={{ margin: 0, color: '#a1a1aa' }}>
             Nuestro modelo de trabajo asegura estabilidad, trazabilidad y mejora continua de las soluciones implementadas, permitiendo coordinar diversos proyectos simultáneamente y garantizando la continuidad operativa en entornos de alta exigencia.
           </p>
         </motion.div>
 
-        {/* Botón CTA */}
         <motion.a
-          href="#fabrica-features" // <-- Apunta a la sección de la Fábrica
+          href="#fabrica-features" 
           initial={{ opacity: 0, y: 30 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           whileHover={{ scale: 1.05 }} 
           whileTap={{ scale: 0.95 }}
           style={{
-            display: 'inline-block', // Mantiene la forma del botón
-            textDecoration: 'none',  // Quita la línea de enlace
+            display: 'inline-block', 
+            textDecoration: 'none',  
             textAlign: 'center',
             backgroundColor: '#ffffff', 
             color: '#050505', 
@@ -157,6 +185,8 @@ export default function HeroFabrica() {
             borderRadius: '999px', 
             fontSize: '1.1rem', 
             fontWeight: 700,
+            /* Aplicamos Brandon Grotesque (Secundaria) al CTA */
+            fontFamily: 'var(--font-secondary)',
             border: 'none', 
             cursor: 'pointer',
             boxShadow: '0 10px 25px rgba(255,255,255,0.1)'

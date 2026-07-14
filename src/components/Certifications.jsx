@@ -43,22 +43,47 @@ export default function Certifications() {
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         
-        {/* --- TÍTULO --- */}
-        <motion.h2 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUpVariant}
-          style={{ 
-            textAlign: 'center', 
-            fontSize: 'clamp(2rem, 5vw, 3rem)', 
-            fontWeight: 700, 
-            letterSpacing: '-0.02em',
-            marginBottom: '4rem' 
-          }}
-        >
-          Certificaciones
-        </motion.h2>
+{/* --- CONTENEDOR DE ENCABEZADO --- */}
+        <div style={{ textSelf: 'center', marginBottom: '4rem' }}>
+          
+          {/* TÍTULO PRINCIPAL */}
+          <motion.h2 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariant}
+            style={{ 
+              textAlign: 'center', 
+              fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', 
+              fontWeight: 800, 
+              letterSpacing: '-0.03em',
+              color: '#ffffff',
+              marginBottom: '0.75rem' // Un espacio corto y elegante antes del subtítulo
+            }}
+          >
+            Certificaciones
+          </motion.h2>
+
+          {/* SUBTÍTULO ESTILIZADO */}
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariant}
+            style={{ 
+              textAlign: 'center', 
+              fontSize: 'clamp(1.1rem, 2vw, 1.3rem)', 
+              fontWeight: 400, 
+              letterSpacing: '-0.01em',
+              color: '#a1a1aa', // Color gris atenuado para dar contraste y elegancia
+              maxWidth: '600px', // Previene que el texto se estire feo en pantallas gigantes
+              margin: '0 auto' // Centra el bloque de texto
+            }}
+          >
+            Estándares que respaldan nuestra ejecución.
+          </motion.p>
+
+        </div>
 
         {/* --- LOGO LOOP (Carrusel infinito) --- */}
         <motion.div 

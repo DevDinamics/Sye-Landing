@@ -191,8 +191,7 @@ export default function Footer() {
 
           <div className="footer-col">
             <h4>Empresa</h4>
-            <a href="/servicios" className="footer-link">Servicios</a>
-            <a href="/politicas" className="footer-link">Políticas</a>
+            
             <a href="/nosotros" className="footer-link">Nosotros</a>
           </div>
 
@@ -212,8 +211,6 @@ export default function Footer() {
           </div>
           {/* Se ajustó el flex para que los enlaces se acomoden en móviles si no caben */}
           <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <a href="/seguridad" className="footer-link" style={{ fontSize: '0.85rem' }}>Seguridad</a>
-            <a href="/terminos" className="footer-link" style={{ fontSize: '0.85rem' }}>Términos de servicio</a>
             <a href="/privacidad" className="footer-link" style={{ fontSize: '0.85rem' }}>Privacidad</a>
           </div>
         </div>

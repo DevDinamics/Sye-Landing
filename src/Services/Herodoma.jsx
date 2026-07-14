@@ -118,10 +118,9 @@ export default function HeroDoma() {
             lineHeight: 1.7,
           }}
         >
-          DOMA es una plataforma tecnológica basada en inteligencia artificial que habilita la
-          creación y operación de trabajadores digitales autónomos para la atención al cliente y
-          la automatización de procesos en entornos físicos y digitales, combinando interacción
-          conversacional y análisis en tiempo real.
+          DOMA es una plataforma tecnológica basada en inteligencia artificial que habilita la creación y operación de trabajadores digitales autónomos para la atención al cliente y la automatización de procesos en entornos físicos y digitales.
+Su enfoque combina automatización, interacción conversacional y análisis en tiempo real, permitiendo a las organizaciones optimizar operaciones, mejorar la experiencia del usuario y tomar decisiones más informadas.
+
         </p>
 
         {/* Botón CTA (Le devolvemos el puntero para que siga siendo clickeable) */}

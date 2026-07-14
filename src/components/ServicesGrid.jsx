@@ -236,11 +236,10 @@ export default function ServicesGrid() {
       `}</style>
 
       {/* --- ENCABEZADO --- */}
-      <div className="section-eyebrow">Soluciones SYE</div>
+      <div id="soluciones" className="section-eyebrow">NUESTROS SERVICIOS</div>
       <h2 className="section-title">Conoce nuestras soluciones</h2>
       <p className="section-subtitle">
-        Nuestras capacidades se integran en modelos tecnológicos institucionales que combinan arquitectura, desarrollo y operación sostenida.
-      </p>
+      Nuestras capacidades se integran en modelos tecnológicos institucionales que combinan arquitectura, desarrollo y operación sostenida.       </p>
 
       {/* --- GRID DE SERVICIOS CON BORDER GLOW --- */}
       <div className="services-container">

@@ -118,7 +118,8 @@ export default function DevSpaceHero() {
           margin: '0 auto 3.5rem auto',
           maxWidth: '850px'
         }}>
-          DevSpace es una solución tecnológica basada en inteligencia artificial que transforma la forma en que se construye software, mediante la creación de un “especificador vivo” que centraliza, interpreta y ejecuta los requerimientos del negocio.
+DevSpace es una solución tecnológica basada en inteligencia artificial que transforma la forma en que se construye software, mediante la creación de un “especificador vivo” que centraliza, interpreta y ejecuta los requerimientos del negocio.
+Este enfoque permite conectar la estrategia con la ejecución técnica, reduciendo tiempos, errores y dependencias, al mismo tiempo que mejora la calidad y la trazabilidad del desarrollo.
         </p>
 
         {/* Botón Principal Estilo Apple (Blanco, limpio, contraste alto) */}

@@ -95,7 +95,7 @@ export default function Hero() {
             willChange: "transform",
           }}
         >
-          Tecnología que fortalece <br/> el servicio público.
+          Tecnología que fortalece <br/> al sector público.
         </motion.h1>
 
         {/* Subheadline corto */}
@@ -121,19 +121,26 @@ export default function Hero() {
           }}
         >
           <motion.a
-            href="#soluciones"
-            whileHover={{ scale: 1.05 }}
-            style={{
-              padding: "12px 28px",
-              borderRadius: "50px",
-              background: "#fff",
-              color: "#000",
-              fontWeight: 700,
-              textDecoration: "none"
-            }}
-          >
-            Conocer soluciones
-          </motion.a>
+  href="#soluciones"
+  whileHover={{ scale: 1.05 }}
+  onClick={(e) => {
+    e.preventDefault(); // Evita el salto instantáneo nativo de HTML
+    document.querySelector('#soluciones').scrollIntoView({ 
+      behavior: 'smooth' 
+    });
+  }}
+  style={{
+    padding: "12px 28px",
+    borderRadius: "50px",
+    background: "#fff",
+    color: "#000",
+    fontWeight: 700,
+    textDecoration: "none",
+    cursor: "pointer"
+  }}
+>
+  Conoce nuestras soluciones
+</motion.a>
           
           
         </motion.div>

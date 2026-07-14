@@ -147,7 +147,7 @@ export default function ContactForm() {
                     </svg>
                   )}
                 </div>
-                <span>He leído y entiendo el <a href="/aviso-privacidad" style={{ color: '#ffffff', textDecoration: 'underline' }}>aviso de privacidad</a></span>
+                <span>He leído y entiendo el <a href="/privacidad" style={{ color: '#ffffff', textDecoration: 'underline' }}>aviso de privacidad</a></span>
               </label>
 
               <AnimatePresence>
