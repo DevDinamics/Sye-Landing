@@ -1,26 +1,119 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Particles from './Particles'; // Asegúrate de que apunte al archivo que guardaste
+import Particles from './Particles'; 
 
 export default function DevSpaceHero() {
   return (
-    <section style={{
-      position: 'relative',
-      width: '100%',
-      minHeight: '100vh',
-      backgroundColor: '#050505', 
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      overflow: 'hidden',
-      fontFamily: "-apple-system, BlinkMacSystemFont, 'Inter', sans-serif"
-    }}>
+    <section 
+      className="hero-devspace-container"
+      style={{
+        position: 'relative',
+        width: '100%',
+        /* El uso de 100dvh evita cortes por la barra de navegación en navegadores móviles */
+        minHeight: '100dvh',
+        backgroundColor: '#050505', 
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        /* Tipografía corporativa primaria aplicada como base */
+        fontFamily: "var(--font-primary)"
+      }}
+    >
       
-      {/* ─── CAPA 1: FONDO INTERACTIVO 3D (React Bits) ─── */}
+      {/* ─── ESTILOS RESPONSIVOS PRO Y JERARQUÍA ─── */}
+      <style>{`
+        .hero-devspace-content {
+          position: relative;
+          z-index: 10;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding: 0 1.5rem;
+          width: 100%;
+          max-width: 1000px;
+          margin-top: 6rem;
+          margin-bottom: 4rem;
+        }
+
+        .devspace-title {
+          font-size: clamp(3.2rem, 8vw, 6rem);
+          font-weight: 800;
+          color: #ffffff;
+          letter-spacing: -0.04em;
+          margin: 0 0 1rem 0;
+          line-height: 1.1;
+        }
+
+        .devspace-subtitle {
+          font-size: clamp(1.4rem, 4vw, 2.5rem);
+          font-weight: 700;
+          color: #75bf40; /* Verde SYE */
+          letter-spacing: -0.02em;
+          margin: 0 0 2.5rem 0;
+          line-height: 1.2;
+        }
+
+        /* Contenedor flexible para párrafos (Mejor UX en móvil que usar <br/>) */
+        .devspace-paragraph-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 1.2rem;
+          max-width: 850px;
+          margin: 0 auto 3.5rem auto;
+        }
+
+        .devspace-paragraph {
+          color: #a1a1aa;
+          font-size: clamp(1rem, 2.2vw, 1.2rem);
+          line-height: 1.7;
+          margin: 0;
+        }
+
+        .devspace-cta {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #ffffff;
+          color: #050505;
+          padding: 16px 42px;
+          /* ✅ Usamos !important para que ningún estilo global te quite lo "redondito" */
+          border-radius: 999px !important; 
+          font-weight: 700;
+          font-size: 1.05rem;
+          text-decoration: none;
+          /* Tipografía secundaria para contraste editorial */
+          font-family: var(--font-secondary);
+          box-shadow: 0 10px 30px rgba(255,255,255,0.15);
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+
+        /* ─── MEDIA QUERIES (TABLET Y MÓVIL) ─── */
+        @media (max-width: 768px) {
+          .hero-devspace-content {
+            margin-top: 4rem;
+            padding: 0 1.25rem;
+          }
+          .devspace-paragraph {
+            text-align: center;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .devspace-cta {
+            /* ✅ Le damos 90% para que no toque los bordes y mantenga su forma de píldora */
+            width: 50%; 
+            max-width: 320px;
+            padding: 15px 24px; /* Ajuste de padding para móviles */
+          }
+        }
+      `}</style>
+      
+      {/* ─── CAPA 1: FONDO INTERACTIVO 3D ─── */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-        
-        {/* Viñeta de gradiente para que las partículas se desvanezcan en los bordes y centren la atención */}
         <div style={{
           position: 'absolute',
           inset: 0,
@@ -30,36 +123,26 @@ export default function DevSpaceHero() {
         }} />
         
         <Particles
-    particleColors={["#ffffff"]}
-    particleCount={500}
-    particleSpread={10}
-    speed={0.2}
-    particleBaseSize={100}
-    moveParticlesOnHover
-    alphaParticles={false}
-    disableRotation={false}
-    pixelRatio={1}
-/>
+          particleColors={["#ffffff"]}
+          particleCount={500}
+          particleSpread={10}
+          speed={0.2}
+          particleBaseSize={100}
+          moveParticlesOnHover
+          alphaParticles={false}
+          disableRotation={false}
+          pixelRatio={1}
+        />
       </div>
 
-      {/* ─── CAPA 2: CONTENIDO CENTRAL (Dark Tech Premium) ─── */}
+      {/* ─── CAPA 2: CONTENIDO CENTRAL ─── */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        style={{
-          position: 'relative',
-          zIndex: 10,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          textAlign: 'center',
-          padding: '0 2rem',
-          maxWidth: '1000px',
-          marginTop: '4rem' // Deja espacio si tienes un navbar fijo
-        }}
+        className="hero-devspace-content"
       >
-        {/* Etiqueta / Pill superior con el Logo */}
+        {/* Badge Pill Superior */}
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -76,76 +159,54 @@ export default function DevSpaceHero() {
             marginBottom: '2rem'
           }}
         >
-          {/* Logo transparente */}
           <img
             src="/devTransparente.webp"
             alt="DevSpace Logo"
             style={{ width: '22px', height: '22px', objectFit: 'contain' }}
           />
-          <span style={{ color: '#d4d4d8', fontWeight: 600, fontSize: '0.85rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+          <span style={{ 
+            color: '#d4d4d8', 
+            fontWeight: 600, 
+            fontSize: '0.85rem', 
+            letterSpacing: '0.1em', 
+            textTransform: 'uppercase',
+            fontFamily: 'var(--font-secondary)'
+          }}>
             DevSpace
           </span>
         </motion.div>
 
         {/* Título Principal */}
-        <h1 style={{
-          fontSize: 'clamp(3rem, 8vw, 6rem)',
-          fontWeight: 800,
-          color: '#ffffff',
-          letterSpacing: '-0.04em',
-          margin: '0 0 1rem 0',
-          lineHeight: 1.1
-        }}>
+        <h1 className="devspace-title">
           DevSpace
         </h1>
 
         {/* Subtítulo Verde SYE */}
-        <h2 style={{
-          fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
-          fontWeight: 700,
-          color: '#75bf40', 
-          letterSpacing: '-0.02em',
-          margin: '0 0 2rem 0'
-        }}>
+        <h2 className="devspace-subtitle">
           Desarrollo inteligente, para ejecución de tareas
         </h2>
 
         {/* Descripción */}
-        <p style={{
-          color: '#a1a1aa',
-          fontSize: 'clamp(1.05rem, 2vw, 1.2rem)',
-          lineHeight: 1.7,
-          margin: '0 auto 3.5rem auto',
-          maxWidth: '850px'
-        }}>
-DevSpace es una solución tecnológica basada en inteligencia artificial que transforma la forma en que se construye software, mediante la creación de un “especificador vivo” que centraliza, interpreta y ejecuta los requerimientos del negocio.
-Este enfoque permite conectar la estrategia con la ejecución técnica, reduciendo tiempos, errores y dependencias, al mismo tiempo que mejora la calidad y la trazabilidad del desarrollo.
-        </p>
+        <div className="devspace-paragraph-wrapper">
+          <p className="devspace-paragraph">
+            DevSpace es una solución tecnológica basada en inteligencia artificial que transforma la forma en que se construye software, mediante la creación de un “especificador vivo” que centraliza, interpreta y ejecuta los requerimientos del negocio.
+          </p>
+          <p className="devspace-paragraph">
+            Este enfoque permite conectar la estrategia con la ejecución técnica, reduciendo tiempos, errores y dependencias, al mismo tiempo que mejora la calidad y la trazabilidad del desarrollo.
+          </p>
+        </div>
 
-        {/* Botón Principal Estilo Apple (Blanco, limpio, contraste alto) */}
+        {/* Botón Principal (Redondito) */}
         <motion.a
-  href="#metodologia" // <-- Este es el ID que va a buscar en la página
-  whileHover={{ scale: 1.05 }}
-  whileTap={{ scale: 0.98 }}
-  style={{
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ffffff',
-    color: '#050505',
-    padding: '18px 48px',
-    borderRadius: '999px',
-    fontWeight: 700,
-    fontSize: '1.05rem',
-    textDecoration: 'none',
-    boxShadow: '0 10px 30px rgba(255,255,255,0.15)',
-    transition: 'all 0.3s ease'
-  }}
-  onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f4f4f5'}
-  onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#ffffff'}
->
-  Descubrir solución
-</motion.a>
+          href="#metodologia"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.98 }}
+          className="devspace-cta"
+          onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f4f4f5'}
+          onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#ffffff'}
+        >
+          Descubrir solución
+        </motion.a>
       </motion.div>
     </section>
   );

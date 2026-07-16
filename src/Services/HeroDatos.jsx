@@ -9,18 +9,19 @@ export default function HeroDatos() {
       style={{
         position: 'relative',
         width: '100%',
-        minHeight: '100vh',
+        /* ✅ TRUCO PRO: 100dvh soluciona el problema de la barra de direcciones en Safari/Chrome móvil */
+        minHeight: '100dvh',
         backgroundColor: '#050505',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
-        /* Aplicamos Montserrat (Primaria) como base general */
+        /* ✅ Aplicamos Montserrat (Primaria) como base general */
         fontFamily: "var(--font-primary)",
       }}
     >
       
-      {/* ─── ESTILOS RESPONSIVOS Y JERARQUÍA ─── */}
+      {/* ─── ESTILOS RESPONSIVOS PRO Y JERARQUÍA ─── */}
       <style>{`
         .hero-datos-content {
           position: relative;
@@ -30,6 +31,7 @@ export default function HeroDatos() {
           align-items: center;
           text-align: center;
           padding: 0 1.5rem;
+          width: 100%;
           max-width: 1000px;
           margin-top: 6rem;
           margin-bottom: 4rem;
@@ -48,28 +50,61 @@ export default function HeroDatos() {
           font-size: clamp(1.5rem, 5vw, 3rem);
           font-weight: 700;
           color: #75bf40;
-          margin: 0 0 2.5rem 0;
+          margin: 0 0 2rem 0;
           line-height: 1.2;
           letter-spacing: -0.02em;
+        }
+
+        /* ✅ TRUCO PRO: Contenedor de párrafos en lugar de <br/> */
+        .datos-paragraph-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 1.2rem;
+          max-width: 850px;
+          margin: 0 auto 3rem auto;
         }
 
         .datos-paragraph {
           font-size: clamp(1rem, 2.5vw, 1.25rem);
           color: #d4d4d8;
           line-height: 1.75;
-          max-width: 850px;
-          margin: 0 auto 3rem auto;
+          margin: 0;
         }
 
-        /* Ajustes específicos para móviles */
+        .datos-cta {
+          display: inline-block;
+          text-decoration: none;
+          text-align: center;
+          background-color: #ffffff;
+          color: #050505;
+          padding: 16px 36px;
+          border-radius: 999px;
+          font-size: 1.1rem;
+          font-weight: 700;
+          /* ✅ Brandon Grotesque (Secundaria) aplicado al botón */
+          font-family: var(--font-secondary);
+          border: none;
+          cursor: pointer;
+          box-shadow: 0 10px 25px rgba(255,255,255,0.1);
+        }
+
+        /* ─── MEDIA QUERIES (TABLET Y MÓVIL) ─── */
         @media (max-width: 768px) {
           .hero-datos-content {
             margin-top: 4rem;
             padding: 0 1.25rem;
           }
+          /* En móvil, el texto centrado suele leerse mejor que justificado si son pocas líneas */
           .datos-paragraph {
-            text-align: justify;
-            text-align-last: center;
+            text-align: center;
+          }
+        }
+
+        /* ✅ TRUCO PRO: Ajuste para pantallas muy pequeñas (iPhone SE, etc) */
+        @media (max-width: 480px) {
+          .datos-cta {
+            width: 50%;
+            max-width: 320px;
           }
         }
       `}</style>
@@ -127,7 +162,7 @@ export default function HeroDatos() {
             fontWeight: 600, 
             fontSize: '0.85rem', 
             letterSpacing: '0.15em',
-            /* Brandon Grotesque (Secundaria) aplicado en la etiqueta de navegación superior */
+            /* ✅ Brandon Grotesque (Secundaria) aplicado en la etiqueta de navegación superior */
             fontFamily: 'var(--font-secondary)' 
           }}>
             DATOS
@@ -154,17 +189,20 @@ export default function HeroDatos() {
           Gobernanza e inteligencia institucional
         </motion.h2>
 
-        {/* Cuerpo del Texto */}
-        <motion.p
+        {/* Cuerpo del Texto (Optimizado sin <br/>) */}
+        <motion.div
           initial={{ opacity: 0, y: 30 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="datos-paragraph"
+          className="datos-paragraph-wrapper"
         >
-          Integramos, estructuramos y analizamos información institucional para transformar datos dispersos en inteligencia útil para la gestión pública.
-          <br/><br/>
-          Apoyamos la toma de decisiones operativas y estratégicas mediante arquitecturas de datos organizadas y sostenibles.
-        </motion.p>
+          <p className="datos-paragraph">
+            Integramos, estructuramos y analizamos información institucional para transformar datos dispersos en inteligencia útil para la gestión pública.
+          </p>
+          <p className="datos-paragraph">
+            Apoyamos la toma de decisiones operativas y estratégicas mediante arquitecturas de datos organizadas y sostenibles.
+          </p>
+        </motion.div>
 
         {/* Botón CTA */}
         <motion.a
@@ -174,22 +212,7 @@ export default function HeroDatos() {
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           whileHover={{ scale: 1.05 }} 
           whileTap={{ scale: 0.95 }}
-          style={{
-            display: 'inline-block', 
-            textDecoration: 'none',  
-            textAlign: 'center',
-            backgroundColor: '#ffffff', 
-            color: '#050505', 
-            padding: '16px 36px',
-            borderRadius: '999px', 
-            fontSize: '1.1rem', 
-            fontWeight: 700,
-            /* Brandon Grotesque (Secundaria) aplicado al botón principal */
-            fontFamily: 'var(--font-secondary)',
-            border: 'none', 
-            cursor: 'pointer',
-            boxShadow: '0 10px 25px rgba(255,255,255,0.1)'
-          }}
+          className="datos-cta"
         >
           Conocer Datos
         </motion.a>
