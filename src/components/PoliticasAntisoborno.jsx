@@ -24,7 +24,6 @@ const AccordionItem = ({ title, children }) => {
           transition: 'all 0.3s ease',
           /* ✅ Aplicamos el color verde y el subrayado cuando está abierto, tal como en tu captura */
           color: isOpen ? '#75bf40' : '#ffffff',
-          textDecoration: isOpen ? 'underline' : 'none',
           textUnderlineOffset: '4px'
         }}
       >
@@ -74,11 +73,17 @@ export default function PoliticasAntisoborno() {
   // Solo cambia el texto dentro de las comillas de 'content'.
   const descripcionItems = [
     {
-      title: "Revisión de la Política Antisoborno",
-      content: "La Política Antisoborno será revisada al menos una vez al año, al ser requerido por la dirección o si ocurren cambios significativos en la organización, y dejando como evidencia un registro de la Minuta de reunión."
+      title: <span style={{ textDecoration: 'none', display: 'inline-block' }}>Revisión de la Política Antisoborno</span>,
+      content: (
+        <>
+          <p style={{ margin: 0 }}>
+            La Política Antisoborno será revisada al menos una vez al año, al ser requerido por la dirección o si ocurren cambios significativos en la organización, y dejando como evidencia un registro de la Minuta de reunión.
+          </p>
+        </>
+      )
     },
     {
-      title: "Identificar y prevenir el soborno",
+      title: <span style={{ textDecoration: 'none', display: 'inline-block' }}>Identificar y prevenir el soborno</span>,
       content: (
         <>
           <p style={{ marginBottom: '1.2rem' }}>
@@ -272,35 +277,298 @@ export default function PoliticasAntisoborno() {
     },
     {
       title: "Gastos de viaje y Viáticos",
-      content: "Ingresa aquí el texto para Gastos de viaje y Viáticos."
+      content: (
+        <>
+          <p style={{ marginBottom: '1.2rem' }}>
+            Está prohibido ofrecer, solicitar o aceptar invitaciones a viajes ya que se pueden percibir con la intención de influir o inducir a cualquiera de las partes a realizar actos que otorguen un beneficio Indebido a la organización, a sus Colaboradores, Familiares, amigos, asociados o entidades en las que tenga un Interés significativo.
+          </p>
+          <p style={{ marginBottom: '1.2rem' }}>
+            Cuando se trate de invitaciones para fines relacionados con el negocio, como presentaciones y conferencias deberán tener un sentido legítimo empresarial y los gastos de viaje que se deriven deben ser cubiertos por la organización.
+          </p>
+          <p style={{ marginBottom: '1.2rem' }}>
+            Los gastos de viaje y viáticos que pueden ser autorizados corresponden a los derivados de transportación aérea o terrestre, hospedaje y alimentos, que deberán cumplir con los siguientes lineamientos:
+          </p>
+          
+          {/* Lista de Lineamientos de Viáticos */}
+          <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.8rem', margin: '0 0 1.5rem 0' }}>
+            <li>
+              El costo de los vuelos, transporte, alimentos y hospedaje se autorizará y reembolsará conforme a los lineamientos establecidos en la Política de Viáticos y Comprobaciones.
+            </li>
+            <li>
+              Cualquier gasto que no esté relacionado con un asunto de negocios de la organización o trabajo no será autorizado ni reembolsado.
+            </li>
+            <li>
+              Los reembolsos a terceros sólo aplicarán cuando exista un contrato (o en su defecto, una propuesta de servicios aceptada) que lo estipule.
+            </li>
+          </ul>
+
+          <p style={{ marginBottom: '1.2rem' }}>
+            El oficial de cumplimiento antisoborno:
+          </p>
+
+          {/* Lista de Responsabilidades del Oficial */}
+          <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.8rem', margin: 0 }}>
+            <li>
+              Revisar cada solicitud de viáticos y reembolsos registrada para terceros en la mesa de ayuda de Solicitudes administrativas.
+            </li>
+            <li>
+              Únicamente considerar los registros de gastos por otorgar a empresas o individuos que no formen parte de las empresas de Grupo Qualtop y validar que se cumplan las políticas establecidas para los viáticos y reembolso y en caso de que así sea, deberá de comunicarlo vía correo electrónico a los integrantes del Comité de Ética, estos deberán de revisar la información y responder por correo a más tardar los siguientes 3 días hábiles con su aprobación o rechazo, la solicitud se considerará aprobada o rechazada cuando por lo menos la mitad más uno de los integrantes del Comité de Ética haya expresado su decisión.
+            </li>
+            <li>
+              Informar de la decisión final al colaborador.
+            </li>
+            <li>
+              Ser responsable de llevar un registro de todos los tickets solicitados y recibidos.
+            </li>
+          </ul>
+        </>
+      )
     },
     {
       title: "Socios de negocio",
-      content: "Ingresa aquí el texto para Socios de negocio."
+      content: (
+        <>
+          <p style={{ marginBottom: '1.2rem' }}>
+            Las organizaciones sobre las que la organización tiene control son la de Proveedores, Aliados y Socios de Negocio. Quienes deben apegarse y cumplir la presente política.
+          </p>
+          <p style={{ marginBottom: '1.2rem' }}>
+            Las organizaciones sobre las que se considera que no tenemos control son los Clientes y Partners, ya que nos estaremos apegando a sus lineamientos. Debido a ello, si se identifica algún desapego a esta política o antecedente de soborno se deberá identificar, evaluar y tratar como un riesgo de soborno.
+          </p>
+          <p style={{ marginBottom: '1.2rem' }}>
+            Cuando se haya identificado un riesgo no bajo de soborno, ya sea a través de la evaluación de riesgos o la debida diligencia, se deberá determinar si el socio de negocio cuenta con controles antisoborno apropiados que gestionen el riesgo de soborno, tales como: Política Antisoborno, Función de Cumplimiento Antisoborno, Código de Ética u otro similar.
+          </p>
+          <p style={{ marginBottom: '1.2rem' }}>
+            En este contexto, si se identifica que el socio de negocio no cuenta con dichos controles, o si no es posible verificarlos, la organización deberá:
+          </p>
+          
+          {/* Lista de acciones a tomar */}
+          <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.8rem', margin: '0 0 1.5rem 0' }}>
+            <li>
+              De ser posible, fomentar y requerir la implementación de controles antisoborno en relación con la operación, proyecto o actividad correspondiente.
+            </li>
+            <li>
+              De no ser posible, se deberá evaluar el riesgo de soborno que conlleva la relación con el socio de negocio y evaluar la manera de gestionar dicho riesgo.
+            </li>
+          </ul>
+
+          <p style={{ marginBottom: '1.2rem' }}>
+            Cuando algún Proveedor, Aliado o Socio de Negocio no desea aceptar la Política Antisoborno no se podrá continuar con la firma del contrato ni la relación comercial.
+          </p>
+          <p style={{ margin: 0 }}>
+            Cuando un socio de negocio no desee implementar controles antisoborno la organización puede tomar la decisión de terminar, interrumpir, suspender o retirarse de la relación comercial.
+          </p>
+        </>
+      )
     },
     {
       title: "Puestos Claves",
-      content: "Ingresa aquí el texto para Puestos Claves."
+      content: (
+        <>
+          <p style={{ marginBottom: '1.5rem' }}>
+            Los puestos identificados como clave que se listan a continuación deberán presentar una declaración de cumplimiento antisoborno por lo menos una vez al año o al cambiar de puesto:
+          </p>
+          
+          <p style={{ fontWeight: 700, color: '#ffffff', marginBottom: '1rem', fontSize: '1.1rem' }}>
+            Puestos Administrativos:
+          </p>
+
+          {/* 
+            ✅ TRUCO PRO: Usamos columnCount para distribuir la lista de puestos en 2 columnas 
+            en pantallas grandes. En móviles el CSS responsivo general lo adaptará.
+          */}
+          <ul style={{ 
+            listStyleType: 'disc', 
+            paddingLeft: '1.5rem', 
+            display: 'block', 
+            columnCount: 'clamp(1, 2vw, 2)', 
+            columnGap: '2rem',
+            margin: 0 
+          }}>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Analista de Compras</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Apoderado Legal</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Chofer</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Contador de Nómina</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Contador</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Auxiliar de Nómina</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Coordinador de Reclutamiento</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Reclutador TI</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Coordinador de Administración General</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Coordinador de Administración de Personal</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Coordinador de Capacitación y Desarrollo Organizacional</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Customer Success Leader Jr</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Customer Success Leader Sr</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Customer Success Manager</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Director Comercial Gobierno</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Director de Administración y Finanzas</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Director de Auditoría Interna y Procesos</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Director de PMO</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Director de THDO</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Director de I+D</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Director Ejecutivo/Executive Director</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Director General</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Especialista de Proyectos de Gobierno Sr.</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Gerente de Administración y Finanzas</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Gerente de Cuentas por Cobrar</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Gerente de la PMO</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Gerente de Preventa Cloud</li>
+            {/* 💡 Por cierto, aquí andan los puestos de Gerente y Analista de Infraestructura jeje */}
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Gerente de Infraestructura y Soporte TI</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Analista de Infraestructura y Soporte TI</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Gerente de Administración de Personal</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Gerente de Tesorería</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Líder Especialista de Proyectos de Gobierno</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Project Success Executive</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Sales & Business Development Manager</li>
+            <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Comercial Senior</li>
+          </ul>
+        </>
+      )
     },
     {
       title: "Puestos de Operaciones / Proyecto:",
-      content: "Ingresa aquí el texto para Puestos de Operaciones / Proyecto."
+      content: (
+        <>
+          <ul style={{ 
+            listStyleType: 'disc', 
+            paddingLeft: '1.5rem', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: '0.8rem', 
+            margin: 0 
+          }}>
+            <li>Contract Manager</li>
+            <li>Director de Operaciones Gobierno y APS</li>
+            <li>Director de Proyectos</li>
+            <li>Gerente/Sub-Gerente del Proyecto</li>
+            <li>Coordinador de Proyectos</li>
+            <li>Líder de Proyecto/ Líder de Área / Project Manager</li>
+          </ul>
+        </>
+      )
     },
     {
       title: "Formación",
-      content: "Ingresa aquí el texto para Formación."
+      content: (
+        <>
+          <ul style={{ 
+            listStyleType: 'disc', 
+            paddingLeft: '1.5rem', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: '0.8rem', 
+            margin: 0 
+          }}>
+            <li>Toda capacitación que se requiera deberá seguir el proceso de Capacitaciones.</li>
+            <li>Todo el personal incluyendo directivos, debe realizar el curso de formación sobre la Política Antisoborno por lo menos una vez al año, dicho curso será administrado por el área de capacitación.</li>
+            <li>Todo el personal señalado en el alcance del Sistema de Gestión Antisoborno, debe realizar el curso de formación sobre la Política Antisoborno por lo menos una vez al año, dicho curso será administrado por el área de capacitación.</li>
+          </ul>
+        </>
+      )
     },
     {
       title: "Delegación de la toma de decisiones antisoborno",
-      content: "Ingresa aquí el texto para Delegación de la toma de decisiones antisoborno."
+      content: (
+        <>
+          <p style={{ marginBottom: '1.2rem' }}>
+            El Oficial de Cumplimiento Antisoborno será el responsable de gestionar las tomas de decisiones formales que se presenten y de asegurar la implementación de la mejor solución conforme al Proceso Toma de decisiones organizacionales.
+          </p>
+          <p style={{ marginBottom: '1.2rem' }}>
+            Es obligatorio realizar un proceso formal de toma de decisiones ante las siguientes situaciones:
+          </p>
+          
+          <ul style={{ 
+            listStyleType: 'disc', 
+            paddingLeft: '1.5rem', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: '0.8rem', 
+            margin: 0 
+          }}>
+            <li>Ante un incumplimiento con la Política Antisoborno.</li>
+            <li>Cuándo en la debida diligencia se identifica algún antecedente de soborno.</li>
+            <li>Cuando exista conflicto de intereses ya sea entre personal interno, o personal interno con agentes externos a la organización.</li>
+          </ul>
+        </>
+      )
     },
     {
       title: "Consecuencias del Incumplimiento",
-      content: "Ingresa aquí el texto para Consecuencias del Incumplimiento."
+      content: (
+        <>
+          <p style={{ marginBottom: '1.2rem' }}>
+            Los directivos y los colaboradores deben conocer, comprender y cumplir la presente política.
+          </p>
+          <p style={{ margin: 0 }}>
+            Cualquier acto no congruente o en contra de esta política que sea observado o denunciado por cualquier medio, será revisado por el Comité de Ética, conforme a los lineamientos que para este efecto aplican y estarán sujetos a sanciones según lo indica la Matriz de Sanciones, las cuales pueden llegar hasta la rescisión laboral.
+          </p>
+        </>
+      )
     },
     {
       title: "Procedimientos de Cumplimiento, Implementación, Denuncia y Control",
-      content: "Ingresa aquí el texto para Procedimientos de Cumplimiento, Implementación, Denuncia y Control."
+      content: (
+        <>
+          {/* Primera lista de viñetas antes del enlace web */}
+          <ul style={{ 
+            listStyleType: 'disc', 
+            paddingLeft: '1.5rem', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: '0.8rem', 
+            margin: '0 0 1rem 0' 
+          }}>
+            <li>Cualquier Directivo, Colaborador, Proveedor, Aliado, Partner o Cliente, tiene la obligación de reportar ante cualquier conocimiento de incumplimiento real o sospechoso de esta Política al Oficial de Cumplimiento Antisoborno.</li>
+            <li>
+              Cuando un colaborador o socio de negocio requiera obtener información, asesoría, exponer sus preocupaciones, solicitar apoyo o plantear dudas sobre temas relacionados con riesgos o posibles actos de soborno podrán acercarse al Oficial de Cumplimiento Antisoborno o al Comité de Ética para obtener asesoría, o bien, podrán hacer uso de la&nbsp;
+              <a href="#" style={{ color: '#75bf40', fontWeight: 600, textDecoration: 'none' }}>Línea de Denuncia</a>.
+            </li>
+            <li>Cualquier reporte de soborno o actividad sospechosa será tratado como confidencial. Ninguna persona que realice un reporte de soborno o de actividad sospechosa de buena fe sufrirá sanción o perjuicio por esta actividad.</li>
+            <li>
+              Se ha establecido el canal&nbsp;
+              <a href="#" style={{ color: '#75bf40', fontWeight: 600, textDecoration: 'none' }}>Línea de Denuncia</a>
+              &nbsp;supervisado por el Oficial de Cumplimiento Antisoborno y Comité de Ética, el cual es un canal de acceso público de denuncia, para que todos los interesados puedan realizar, de buena fe y sin temor a represalias, consultas o comunicaciones de incumplimientos de lo establecido en esta Política.</li>
+            <li>
+              Si se tiene conocimiento de alguna conducta (activa o pasiva) contraria al contenido de la presente Política, se debe seguir el Proceso de Línea de Denuncia de Antisoborno para el planteamiento de inquietudes o denuncias y comunicarlo a través de la&nbsp;
+              <a href="#" style={{ color: '#75bf40', fontWeight: 600, textDecoration: 'none' }}>Línea de Denuncia</a>
+              , al que se podrá acceder a través de las páginas web de la organización:
+            </li>
+          </ul>
+
+          {/* Enlace de la URL externa con la sangría correspondiente tal como en tu captura */}
+          <div style={{ paddingLeft: '2.5rem', marginBottom: '1.5rem' }}>
+            <span style={{ color: '#75bf40', marginRight: '0.5rem' }}>•</span>
+            <a 
+              href="https://www.syesoftware.com/linea-de-denuncia/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ color: '#75bf40', fontWeight: 600, textDecoration: 'none' }}
+              onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
+              onMouseOut={(e) => e.currentTarget.style.textDecoration = 'none'}
+            >
+              https://www.syesoftware.com/linea-de-denuncia/
+            </a>
+          </div>
+
+          {/* Segunda lista de viñetas después del enlace web */}
+          <ul style={{ 
+            listStyleType: 'disc', 
+            paddingLeft: '1.5rem', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: '0.8rem', 
+            margin: 0 
+          }}>
+            <li>La denuncia se puede presentar de forma anónima o el remitente se puede identificar. En cualquier caso, se garantiza la confidencialidad de la información que se comunique.</li>
+            <li>Todas aquellas personas que, de buena fe o sobre la base de una creencia razonable, transmitan sus notificaciones, cooperen en una investigation o se nieguen a participar en actos presumibles de soborno estarán protegidas contra cualquier tipo de discriminación, represalias y penalización por motivo de las denuncias realizadas a menos que en base a las investigaciones se compruebe que estas mismas personas que notifican o cooperan en la investigación se encuentren involucradas.</li>
+            <li>
+              Reportar en la&nbsp;
+              <a href="#" style={{ color: '#75bf40', fontWeight: 600, textDecoration: 'none' }}>Línea de Denuncia</a>
+              &nbsp;cualquier discriminación o represalias ante alguna denuncia, participación en la investigación o por negarse a participar en actos de soborno.</li>
+            <li>Es causa de despido para todo aquel que tome represalias contra algún denunciante, participante en una investigación o por negarse a participar en un soborno.</li>
+            <li>Las denuncias falsas o difamatorias podrán ser objeto de sanción o dar lugar al ejercicio de las acciones a que haya lugar en derecho.</li>
+          </ul>
+        </>
+      )
     }
   ];
 

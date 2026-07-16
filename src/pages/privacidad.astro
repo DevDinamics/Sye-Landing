@@ -4,61 +4,89 @@ import Footer from '../components/Footer.jsx';
 import AvisoPrivacidad from '../components/AvisoPrivacidad.jsx';
 
 // ─── VARIABLES SEO DINÁMICAS PARA ESTA PÁGINA ───
-const title = "Aviso de Privacidad | SYE Software";
-const description = "Conoce cómo protegemos y manejamos tus datos personales en SYE Software, en cumplimiento con la Ley Federal de Protección de Datos Personales.";
+const title = "Aviso de Privacidad | SYE Software - Protección y Confidencialidad";
+const description = "Conoce cómo protegemos, resguardamos y manejamos tus datos personales en SYE Software, en estricto cumplimiento con la legislación de protección de datos.";
 const siteUrl = "https://www.syesoftware.com/aviso-de-privacidad"; 
-const ogImage = ""; // Puedes usar la misma imagen maestra
+const ogImage = "https://www.syesoftware.com/sye tarjeta.png"; // Imagen maestra para despliegues en redes
 ---
 
+<!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="/Simbolo_sye_.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
-        <!-- 🚀 SEO TÉCNICO -->
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <link rel="canonical" href={siteUrl} />
-        <meta name="theme-color" content="#050505" />
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="/Simbolo_sye_.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-        <!-- 🌐 OPEN GRAPH -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={siteUrl} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={ogImage} />
-        <meta property="og:site_name" content="SYE Software" />
+  <!-- 🚀 SEO TÉCNICO -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="Aviso de Privacidad, Protección de Datos, Confidencialidad, Términos Legales, Seguridad de la Información, SYE Software" />
+  <meta name="author" content="SYE Software" />
+  <link rel="canonical" href={siteUrl} />
+  <meta name="theme-color" content="#050505" />
 
-        <!-- 🐦 TWITTER CARDS -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={ogImage} />
+  <!-- 🌐 OPEN GRAPH (Tarjetas para redes sociales y WhatsApp) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={siteUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content="SYE Software" />
 
-        <!-- 📊 GOOGLE ANALYTICS 4 (GA4) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" is:inline></script>
-        <script is:inline>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-XXXXXXXXXX');
-        </script>
+  <!-- 🐦 TWITTER CARDS -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content={siteUrl} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
 
-        <style>
-          /* Reseteo global ajustado al Dark Mode */
-          * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
-          body { background-color: #050505; color: #ffffff; overflow-x: hidden; }
-        </style>
-    </head>
-    <body>
-        <!-- Usamos client:load para hidratar el Navbar -->
-        <Navbar client:load />
-        
-        <!-- Tu nuevo componente premium. ¡IMPORTANTE EL client:load por las animaciones de Framer Motion! -->
-        <AvisoPrivacidad client:load />
-        
-        <!-- El Footer para cerrar la página -->
-        <Footer client:load />
-    </body>
+  <!-- 📊 GOOGLE ANALYTICS 4 (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" is:inline></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    // 👉 REEMPLAZA "G-XXXXXXXXXX" CON EL ID REAL DE TU PROPIEDAD DE GA4
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <style is:global>
+    /* Reseteo global ajustado al Dark Mode y consistencia editorial */
+    * { 
+      box-sizing: border-box; 
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #050505;
+      width: 100%;
+      
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: white;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  {/* Agregamos el data-theme para asegurar contraste del Navbar si aplica */}
+  <div data-navbar-theme="dark">
+    {/* Navbar interactivo */}
+    <Navbar client:load />
+    
+    <main>
+      {/* Componente interactivo del Aviso con animaciones */}
+      <AvisoPrivacidad client:load />
+    </main>
+    
+    {/* Footer institucional */}
+    <Footer client:load />
+  </div>
+</body>
 </html>

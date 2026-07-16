@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef, useState } from 'react';
-import { motion, useMotionValue, useMotionTemplate, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
 
 // ─────────────────────────────────────────────
 // Tokens de marca
@@ -16,26 +16,6 @@ const BRAND = {
 
 const GRADIENT_CTA = `linear-gradient(90deg, ${BRAND.indigo}, ${BRAND.magenta})`;
 const EASE = [0.16, 1, 0.3, 1];
-
-// 👇 MATEMÁTICA CORREGIDA DEL RECORTE TIPO CLERK 👇
-const NOTCH_HEIGHT = 64;
-const SHOULDER = '12%';
-const ANGLE_WIDTH = '48px';
-
-const CLERK_CUTOUT = `polygon(
-  0% 0%,
-  ${SHOULDER} 0%,
-  calc(${SHOULDER} + ${ANGLE_WIDTH}) ${NOTCH_HEIGHT}px,
-  calc(100% - ${SHOULDER} - ${ANGLE_WIDTH}) ${NOTCH_HEIGHT}px,
-  calc(100% - ${SHOULDER}) 0%,
-  100% 0%,
-  100% 100%,
-  calc(100% - ${SHOULDER}) 100%,
-  calc(100% - ${SHOULDER} - ${ANGLE_WIDTH}) calc(100% - ${NOTCH_HEIGHT}px),
-  calc(${SHOULDER} + ${ANGLE_WIDTH}) calc(100% - ${NOTCH_HEIGHT}px),
-  ${SHOULDER} 100%,
-  0% 100%
-)`;
 
 const CARDS = [
   {
@@ -99,7 +79,7 @@ function TechCircuitOverlay() {
 
   const DASH = 90;
   const GAP = 910;
-  const CYCLE = DASH + GAP; // 1000 — este es el número que usamos en el keyframe
+  const CYCLE = DASH + GAP;
 
   return (
     <svg
@@ -122,7 +102,6 @@ function TechCircuitOverlay() {
               strokeWidth="2"
               vectorEffect="non-scaling-stroke"
             />
-
             <path
               d={d}
               fill="none"
@@ -141,18 +120,6 @@ function TechCircuitOverlay() {
           </g>
         );
       })}
-
-      <style>{`
-        @keyframes circuitFlow {
-          from { stroke-dashoffset: ${CYCLE}; }
-          to   { stroke-dashoffset: 0; }
-        }
-        .circuit-flow {
-          animation-name: circuitFlow;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-        }
-      `}</style>
     </svg>
   );
 }
@@ -197,16 +164,14 @@ function StoryCard({ card, delay }) {
       }}
     >
       <motion.div >
-        <div
-         
-        />
         <motion.div
           style={{
             position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none',
             background: useMotionTemplate`radial-gradient(340px circle at ${mx}px ${my}px, ${BRAND.azulAcero}12, transparent 78%)`,
           }}
         />
-        <div style={{ position: 'relative', zIndex: 1, padding: '2.75rem 2.5rem' }}>
+        {/* Usamos una clase aquí para hacer el padding responsivo */}
+        <div className="story-card-inner" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem', marginBottom: '1.6rem' }}>
             <span
               style={{
@@ -220,9 +185,6 @@ function StoryCard({ card, delay }) {
               {card.icon}
             </span>
             <div>
-              <div style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace", fontSize: '0.7rem', color: '#94a3b8', letterSpacing: '0.1em' }}>
-                {card.index}
-              </div>
               <h4 style={{ color: '#0f172a', fontSize: '0.95rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', margin: 0 }}>
                 {card.label}
               </h4>
@@ -306,9 +268,9 @@ function StatCard({ stat, index }) {
       onViewportEnter={handleEnter}
       transition={{ duration: 0.6, delay: index * 0.08, ease: EASE }}
       whileHover={{ y: -4 }}
+      className="stat-card"
       style={{
         borderRadius: '22px',
-        padding: '2.4rem 1.5rem',
         textAlign: 'center',
         background: stat.highlight ? 'linear-gradient(180deg, #f8f9fc 0%, #ffffff 100%)' : '#ffffff',
         border: stat.highlight ? `1.5px solid ${BRAND.azulAcero}44` : '1px solid rgba(0,0,0,0.06)',
@@ -347,11 +309,11 @@ export default function CaseStudy() {
     <>
       <section
         data-navbar-theme="light"
+        className="clerk-responsive-section"
         style={{
           position: 'relative',
           zIndex: 10,
           backgroundColor: '#ffffff',
-
           backgroundImage: `
             radial-gradient(ellipse at 50% 0%, rgba(92, 99, 173, 0.03) 0%, transparent 60%),
             url('/backgraund.webp')
@@ -359,23 +321,50 @@ export default function CaseStudy() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-
-          marginTop: `-${NOTCH_HEIGHT}px`,
-          marginBottom: `-${NOTCH_HEIGHT}px`,
-          padding: `calc(6rem + ${NOTCH_HEIGHT}px) 2rem calc(7rem + ${NOTCH_HEIGHT}px)`,
-
-          clipPath: CLERK_CUTOUT,
-          WebkitClipPath: CLERK_CUTOUT,
-
           overflow: 'hidden',
         }}
       >
+        {/* ─────────────────────────────────────────────
+            Magia CSS PRO para el Notch Responsivo
+        ───────────────────────────────────────────── */}
         <style>{`
-          @media (max-width: 900px) {
-            .story-grid { grid-template-columns: 1fr !important; }
-            .story-connector { display: none !important; }
-            .stats-grid { grid-template-columns: 1fr 1fr !important; }
+          /* Variables por defecto (Desktop) */
+          .clerk-responsive-section {
+            --notch-height: 64px;
+            --shoulder: 12%;
+            --angle-width: 48px;
+            --pad-top: 6rem;
+            --pad-bot: 7rem;
+
+            /* Matemáticas inyectadas directamente en CSS */
+            margin-top: calc(-1 * var(--notch-height));
+            margin-bottom: calc(-1 * var(--notch-height));
+            padding-top: calc(var(--pad-top) + var(--notch-height));
+            padding-bottom: calc(var(--pad-bot) + var(--notch-height));
+            padding-left: 2rem;
+            padding-right: 2rem;
+
+            clip-path: polygon(
+              0% 0%,
+              var(--shoulder) 0%,
+              calc(var(--shoulder) + var(--angle-width)) var(--notch-height),
+              calc(100% - var(--shoulder) - var(--angle-width)) var(--notch-height),
+              calc(100% - var(--shoulder)) 0%,
+              100% 0%,
+              100% 100%,
+              calc(100% - var(--shoulder)) 100%,
+              calc(100% - var(--shoulder) - var(--angle-width)) calc(100% - var(--notch-height)),
+              calc(var(--shoulder) + var(--angle-width)) calc(100% - var(--notch-height)),
+              var(--shoulder) 100%,
+              0% 100%
+            );
+            -webkit-clip-path: polygon(
+              0% 0%, var(--shoulder) 0%, calc(var(--shoulder) + var(--angle-width)) var(--notch-height), calc(100% - var(--shoulder) - var(--angle-width)) var(--notch-height), calc(100% - var(--shoulder)) 0%, 100% 0%, 100% 100%, calc(100% - var(--shoulder)) 100%, calc(100% - var(--shoulder) - var(--angle-width)) calc(100% - var(--notch-height)), calc(var(--shoulder) + var(--angle-width)) calc(100% - var(--notch-height)), var(--shoulder) 100%, 0% 100%
+            );
           }
+
+          .story-card-inner { padding: 2.75rem 2.5rem; }
+          .stat-card { padding: 2.4rem 1.5rem; }
 
           @keyframes circuitFlow {
             0%   { stroke-dashoffset: 1500; }
@@ -386,30 +375,60 @@ export default function CaseStudy() {
             animation-timing-function: linear;
             animation-iteration-count: infinite;
           }
+
+          /* Modo Tablet */
+          @media (max-width: 900px) {
+            .clerk-responsive-section {
+              --notch-height: 40px;    /* Reducimos la profundidad */
+              --shoulder: 8%;          /* Ajustamos los hombros */
+              --angle-width: 32px;     /* Reducimos el ángulo */
+              --pad-top: 4rem;
+              --pad-bot: 4rem;
+            }
+            .story-grid { grid-template-columns: 1fr !important; }
+            .story-connector { display: none !important; }
+            .stats-grid { grid-template-columns: 1fr 1fr !important; }
+          }
+
+          /* Modo Móvil (Celulares) - Adiós Notch gigante */
+          @media (max-width: 480px) {
+            .clerk-responsive-section {
+              --notch-height: 24px;    /* Súper sutil en celulares */
+              --shoulder: 5%;          
+              --angle-width: 20px;     
+              --pad-top: 3rem;
+              --pad-bot: 3rem;
+              padding-left: 1.2rem;
+              padding-right: 1.2rem;
+            }
+            .stats-grid { grid-template-columns: 1fr !important; }
+            .story-card-inner { padding: 1.75rem 1.25rem; }
+            .stat-card { padding: 1.75rem 1.25rem; }
+          }
         `}</style>
 
         <TechCircuitOverlay />
 
         {/* ---------- Bloque 1: Reto / Solución ---------- */}
         <div style={{ textAlign: 'center', marginBottom: '5.5rem', position: 'relative', zIndex: 2 }}>
-        <motion.img
-  initial={{ opacity: 0, y: -10 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ ease: EASE }} // Asegúrate de tener EASE definido en tu archivo
-  src="/SAT-logo.webp"
-  alt="SAT"
-  style={{ 
-    display: 'block',                 // Fuerza el comportamiento de bloque
-    margin: '0 auto 2.25rem auto',    // Centrado perfecto horizontal y margen inferior
-    height: '65px',                   // Un poco más de altura para compensar el padding
-    objectFit: 'contain',             // Evita que el logo se estire o deforme
-    backgroundColor: '#0f172a',       // Fondo oscuro para que resalten las letras blancas
-    padding: '12px 24px',             // Espaciado interno para que respire el logo
-    borderRadius: '16px',             // Bordes redondeados modernos
-    boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' // Sombra sutil para darle profundidad
-  }}
-/>
+          <motion.img
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ ease: EASE }}
+            src="/SAT-logo.webp"
+            alt="SAT"
+            style={{ 
+              display: 'block',                 
+              margin: '0 auto 2.25rem auto',    
+              height: '65px',                   
+              objectFit: 'contain',             
+              backgroundColor: '#0f172a',       
+              padding: '12px 24px',             
+              borderRadius: '16px',             
+              boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' 
+            }}
+          />
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -450,15 +469,13 @@ export default function CaseStudy() {
             viewport={{ once: true }}
             transition={{ delay: 0.08, ease: EASE }}
             style={{
-              fontSize: 'clamp(1.1rem, 1vw, 2rem)',
-              color: '#0f172a',
-              fontWeight: 100,
-              letterSpacing: '-0.02em', margin: '0 0 1.5rem', lineHeight: 2.05,
+              fontSize: 'clamp(1.1rem, 1.5vw, 2rem)',
+              color: '#475569',
+              fontWeight: 400,
+              letterSpacing: '-0.01em', margin: '0 0 1.5rem', lineHeight: 1.5,
             }}
           >
             Acelerando la innovación tecnológica en la administración tributaria
-
-
           </motion.h3>
 
           <motion.div
@@ -524,7 +541,7 @@ export default function CaseStudy() {
             viewport={{ once: true, margin: '-60px' }}
             transition={{ ease: EASE }}
             style={{
-              borderRadius: '26px', padding: '3.5rem 3rem', textAlign: 'center',
+              borderRadius: '26px', padding: 'clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 3rem)', textAlign: 'center',
               background: 'linear-gradient(135deg, #f8f9fc 0%, #ffffff 100%)',
               border: `1px solid rgba(0,0,0,0.06)`,
               boxShadow: '0 12px 30px -18px rgba(0,0,0,0.08)',
@@ -536,16 +553,6 @@ export default function CaseStudy() {
             <p style={{ color: '#475569', fontSize: '1.08rem', lineHeight: 1.85, maxWidth: '760px', margin: '0 auto' }}>
               {IMPACT_TEXT}
             </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15, ease: EASE }}
-            style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem' }}
-          >
-            
           </motion.div>
         </div>
       </section>

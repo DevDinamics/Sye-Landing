@@ -6,27 +6,70 @@ import DatosFeatures from '../Services/DatosFeatures.jsx';
 import CallToAction from '../components/CallToAction.jsx';
 import Footer from '../components/Footer.jsx';
 
-// Nota: Si más adelante creas un componente "DatosFeatures.jsx" (como hicimos con DOMA o QOPA)
-// para poner las características abajo, puedes importarlo aquí también.
-// import DatosFeatures from '../components/DatosFeatures.jsx';
+// ─── VARIABLES SEO DINÁMICAS ───
+const title = "Datos | SYE - Gobernanza e Inteligencia Institucional";
+const description = "Integramos, estructuramos y analizamos información institucional para transformar datos dispersos en inteligencia útil para la gestión pública.";
+const siteUrl = "https://www.syesoftware.com/datos"; // Ajusta la ruta exacta según tus subcarpetas
+const ogImage = "https://www.syesoftware.com/sye tarjeta.png"; // Imagen épica 1200x630px para las redes
 ---
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Datos | SYE - Gobernanza e Inteligencia Institucional</title>
-  <meta name="description" content="Integramos, estructuramos y analizamos información institucional para transformar datos dispersos en inteligencia útil para la gestión pública.">
-  
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/Simbolo_sye_.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- 🚀 SEO TÉCNICO BÁSICO -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="Gobernanza de Datos, Analítica de Datos, Inteligencia Institucional, Big Data, Gestión Pública, SYE Software" />
+  <meta name="author" content="SYE Software" />
+  <link rel="canonical" href={siteUrl} />
+  <meta name="theme-color" content="#050505" />
+
+  <!-- 🌐 OPEN GRAPH (Tarjetas para redes sociales y WhatsApp) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={siteUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content="SYE Software" />
+
+  <!-- 🐦 TWITTER CARDS -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content={siteUrl} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- 📊 GOOGLE ANALYTICS 4 (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" is:inline></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    // 👉 REEMPLAZA "G-XXXXXXXXXX" CON EL ID REAL DE TU PROPIEDAD DE GA4
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
   <style is:global>
+    /* Reseteo global consistente con el Dark Mode de SYE */
+    * { 
+      box-sizing: border-box; 
+    }
     html, body {
       margin: 0;
       padding: 0;
       background-color: #050505;
       width: 100%;
-      /* Eliminamos height: 100% para que la altura sea natural según el contenido */
-      font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       color: white;
       overflow-x: hidden;
       scroll-behavior: smooth;
@@ -43,6 +86,7 @@ import Footer from '../components/Footer.jsx';
       {/* Tu nuevo Hero interactivo con el DotGrid de fondo */}
       <HeroDatos client:load />
       
+      {/* Características y llamada a la acción */}
       <DatosFeatures client:load /> 
       <CallToAction client:load />
     </main>
