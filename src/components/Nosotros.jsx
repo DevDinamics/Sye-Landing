@@ -127,11 +127,11 @@ export default function Nosotros() {
 
   // Bullets de "¿Por qué trabajar con SYE Software?"
   const porQueBullets = [
-    "Modelos institucionales replicables",
-    "Gestión simultánea de múltiples proyectos",
-    "Metodologías documentadas y auditables",
-    "Operación bajo esquemas formales de gobernanza",
-    "Equipos certificados integrados a estructuras públicas"
+    "Modelos institucionales replicables.",
+    "Gestión simultánea de múltiples proyectos.",
+    "Metodologías documentadas y auditables.",
+    "Operación bajo esquemas formales de gobernanza.",
+    "Equipos certificados integrados a estructuras públicas."
   ];
 
   return (

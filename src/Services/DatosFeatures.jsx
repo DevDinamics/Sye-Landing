@@ -10,10 +10,10 @@ export default function DatosFeatures() {
   ];
 
   const beneficiosList = [
-    "Mayor control institucional",
-    "Decisiones basadas en evidencia",
-    "Transparencia y trazabilidad",
-    "Integración de múltiples fuentes de información"
+    "Mayor control institucional.",
+    "Decisiones basadas en evidencia.",
+    "Transparencia y trazabilidad.",
+    "Integración de múltiples fuentes de información."
   ];
 
   return (
@@ -201,39 +201,44 @@ export default function DatosFeatures() {
           </div>
 
           {/* TARJETA FLOTANTE DE BENEFICIOS */}
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-            className="datos-floating-card"
-          >
-            <h3 className="datos-card-title">
-              Beneficios
-            </h3>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-              {beneficiosList.map((beneficio, index) => (
-                <li 
-                  key={index}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '12px',
-                    fontSize: 'clamp(0.95rem, 2vw, 1.05rem)',
-                    color: '#a1a1aa',
-                    lineHeight: 1.6
-                  }}
-                >
-                  {/* Icono de Check en verde neón exacto al del ejemplo */}
-                  <svg style={{ flexShrink: 0, marginTop: '2px' }} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#75bf40" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                  </svg>
-                  {beneficio}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+<motion.div 
+  initial={{ opacity: 0, y: 50 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+  className="datos-floating-card"
+>
+  <h3 className="datos-card-title">
+    Beneficios
+  </h3>
+  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+    {beneficiosList.map((beneficio, index) => (
+      <li 
+        key={index}
+        style={{
+          display: 'flex',
+          alignItems: 'flex-start',
+          gap: '12px',
+          fontSize: 'clamp(0.95rem, 2vw, 1.05rem)',
+          color: '#a1a1aa',
+          lineHeight: 1.6
+        }}
+      >
+        {/* 🚀 Cambiado: Círculo minimalista verde SYE en perfecta alineación con el texto */}
+        <svg 
+          style={{ flexShrink: 0, marginTop: '6px' }} 
+          width="8" 
+          height="8" 
+          viewBox="0 0 10 10"
+        >
+          <circle cx="5" cy="5" r="5" fill="#75bf40" />
+        </svg>
+        
+        {beneficio}
+      </li>
+    ))}
+  </ul>
+</motion.div>
         </motion.div>
         
       </div>

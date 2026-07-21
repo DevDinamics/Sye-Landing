@@ -5,11 +5,13 @@ import PoliticasCalidadComponent from '../components/PoliticasCalidad.jsx';
 import Navbar from '../components/Navbar.jsx'; 
 import Footer from '../components/Footer.jsx';
 
+import BackToTop from '../components/BackToTop.jsx';
+
 // ─── VARIABLES SEO DINÁMICAS ───
 const title = "Política de Calidad | SYE - Calidad y Mejora Continua";
 const description = "Conoce la Política de Calidad de SYE Software, enfocada en la excelencia, estandarización y satisfacción del cliente basada en la norma ISO 9001:2015.";
-const siteUrl = "https://www.syesoftware.com/politica-de-calidad"; // Ajusta la ruta exacta según tus subcarpetas
-const ogImage = "https://www.syesoftware.com/sye tarjeta.png"; // Imagen épica 1200x630px para las redes
+const siteUrl = "https://www.syesoftware.com/politica-de-calidad"; 
+const ogImage = "https://www.syesoftware.com/sye tarjeta.png"; 
 ---
 
 <!DOCTYPE html>
@@ -19,10 +21,10 @@ const ogImage = "https://www.syesoftware.com/sye tarjeta.png"; // Imagen épica 
   <link rel="icon" type="image/png" href="/Simbolo_sye_.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Fonts -->
+  <!-- 🌐 1. IMPORTACIÓN DE FUENTES CORPORATIVAS HOMOLOGADAS (Producción Blindada) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
   <!-- 🚀 SEO TÉCNICO BÁSICO -->
   <title>{title}</title>
@@ -32,7 +34,7 @@ const ogImage = "https://www.syesoftware.com/sye tarjeta.png"; // Imagen épica 
   <link rel="canonical" href={siteUrl} />
   <meta name="theme-color" content="#050505" />
 
-  <!-- 🌐 OPEN GRAPH (Tarjetas para redes sociales y WhatsApp) -->
+  <!-- 🌐 OPEN GRAPH -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content={siteUrl} />
   <meta property="og:title" content={title} />
@@ -53,36 +55,54 @@ const ogImage = "https://www.syesoftware.com/sye tarjeta.png"; // Imagen épica 
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
-    // 👉 REEMPLAZA "G-XXXXXXXXXX" CON EL ID REAL DE TU PROPIEDAD DE GA4
     gtag('config', 'G-XXXXXXXXXX');
   </script>
 
+  <!-- 🚀 2. ESTILOS GLOBALES HOMOLOGADOS PARA PRODUCCIÓN -->
   <style is:global>
-    /* Reseteo global consistente con el Dark Mode de SYE */
     * { 
       box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
     }
+    
     html, body {
-      margin: 0;
-      padding: 0;
       background-color: #050505;
-      width: 100%;
-      height: 100%;
-      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       color: white;
+      width: 100%;
       overflow-x: hidden;
+      scroll-behavior: smooth;
+      /* Asignamos Poppins como base secundaria por defecto */
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* Forzamos Poppins en textos planos para pisar estilos en línea de React */
+    span, p, a, li, input, textarea, select { 
+      font-family: 'Poppins', sans-serif !important; 
+    }
+
+    /* Forzamos Montserrat en todos los títulos, destacados y botones */
+    h1, h2, h3, h4, h5, h6,
+    .partners-title,
+    .card-title,
+    .devspace-card-title,
+    .doma-card-title,
+    .datos-card-title,
+    .qopa-card-title,
+    .compromisos-content strong,
+    button,
+    button[type="submit"] {
+      font-family: 'Montserrat', sans-serif !important;
     }
   </style>
 </head>
 <body>
-  {/* Navbar interactivo */}
   <Navbar client:load /> 
 
-  {/* Tu nueva sección PRO con la Política de Calidad */}
   <PoliticasCalidadComponent client:load />
 
-  {/* Footer */}
   <Footer client:load />
+
+  <BackToTop client:load />
 </body>
 </html>

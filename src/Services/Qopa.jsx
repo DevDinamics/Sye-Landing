@@ -218,7 +218,7 @@ export default function Qopa() {
           whileTap={{ scale: 0.95 }}
           className="qopa-cta"
         >
-          Descubrir Qopa
+          Descubrir QOPA
         </motion.a>
       </div>
     </section>

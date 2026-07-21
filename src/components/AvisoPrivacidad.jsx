@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
 export default function AvisoPrivacidad() {
@@ -17,14 +17,14 @@ export default function AvisoPrivacidad() {
   };
 
   return (
-    <div style={{ backgroundColor: '#050505', color: '#ffffff', minHeight: '100vh', fontFamily: "-apple-system, BlinkMacSystemFont, 'Inter', sans-serif", position: 'relative' }}>
+    <div style={{ backgroundColor: '#050505', color: '#ffffff', minHeight: '100vh', position: 'relative' }}>
       
       {/* Barra de progreso de lectura en el top */}
       <motion.div 
         style={{ position: 'fixed', top: 0, left: 0, right: 0, height: '3px', background: 'linear-gradient(90deg, transparent, #75bf40)', transformOrigin: '0%', scaleX, zIndex: 100 }} 
       />
 
-      {/* Estilos CSS encapsulados para el formato de documento */}
+      {/* Estilos CSS encapsulados con tipografías corporativas homologadas */}
       <style>{`
         .legal-container {
           max-width: 800px;
@@ -36,9 +36,17 @@ export default function AvisoPrivacidad() {
           border-bottom: 1px solid rgba(255,255,255,0.05);
           padding-bottom: 2rem;
         }
-        .legal-section {
-          margin-bottom: 3.5rem;
+        
+        /* 👑 FUENTE PRIMARIA: Montserrat para Encabezados */
+        .legal-header h1, .legal-h2, .data-card h3, .consent-box h2, .consent-box h3 {
+          font-family: 'Montserrat', sans-serif !important;
         }
+
+        /* 🎯 FUENTE SECUNDARIA: Poppins para todo el contenido de lectura */
+        .legal-header span, .legal-p, .legal-list li, .consent-box p {
+          font-family: 'Poppins', sans-serif !important;
+        }
+
         .legal-h2 {
           font-size: 1.5rem;
           font-weight: 600;
@@ -73,7 +81,6 @@ export default function AvisoPrivacidad() {
           font-weight: bold;
         }
         
-        /* Cajas para Datos (Rompe la pared de texto) */
         .data-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -96,7 +103,6 @@ export default function AvisoPrivacidad() {
           gap: 0.5rem;
         }
         
-        /* Email destacado */
         .email-highlight {
           display: inline-block;
           background: rgba(117, 191, 64, 0.1);
@@ -111,7 +117,6 @@ export default function AvisoPrivacidad() {
           background: rgba(117, 191, 64, 0.2);
         }
 
-        /* Botones de Consentimiento */
         .consent-box {
           margin-top: 5rem;
           padding: 3rem;
@@ -120,43 +125,10 @@ export default function AvisoPrivacidad() {
           border-radius: 24px;
           text-align: center;
         }
-        .btn-agree {
-          background: rgba(117, 191, 64, 0.9);
-          color: #fff;
-          border: none;
-          padding: 1rem 2rem;
-          border-radius: 12px;
-          font-size: 1rem;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.2s;
-        }
-        .btn-agree:hover {
-          background: #75bf40;
-          transform: translateY(-2px);
-          box-shadow: 0 10px 20px rgba(117,191,64,0.2);
-        }
-        .btn-disagree {
-          background: transparent;
-          color: #a1a1aa;
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          padding: 1rem 2rem;
-          border-radius: 12px;
-          font-size: 1rem;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.2s;
-        }
-        .btn-disagree:hover {
-          background: rgba(255, 255, 255, 0.05);
-          color: #fff;
-        }
 
         @media (max-width: 768px) {
           .data-grid { grid-template-columns: 1fr; }
           .consent-box { padding: 2rem 1.5rem; }
-          .btn-group { flex-direction: column; }
-          .btn-group button { width: 100%; }
         }
       `}</style>
 
@@ -190,7 +162,6 @@ export default function AvisoPrivacidad() {
             Los datos personales son toda aquella información que se relaciona con nuestra persona y que nos identifica o nos hace identificables. Nos dan identidad, nos describen y precisan.
           </p>
           
-          {/* Tarjetas informativas para romper el texto */}
           <div className="data-grid">
             <div className="data-card">
               <h3>
@@ -228,7 +199,7 @@ export default function AvisoPrivacidad() {
           </div>
 
           <p className="legal-p">
-            El concepto de datos personales abarca la información en cualquier modo, ya sea alfabética, numérica, gráfica, fotográfica o sonora, y puede estar contenida en cualquier soporte, como papel, memoria informática, cinta de video o DVD. Los datos personales siempre son suyos; sin embargo, en ocasiones es necesario proporcionarlos a terceros para realizar trámites, acceder a productos o recibir servicios.
+            El concept de datos personales abarca la información en cualquier modo, ya sea alfabética, numérica, gráfica, fotográfica o sonora, y puede estar contenida en cualquier soporte, como papel, memoria informática, cinta de video o DVD. Los datos personales siempre son suyos; sin embargo, en ocasiones es necesario proporcionarlos a terceros para realizar trámites, acceder a productos o recibir servicios.
           </p>
         </motion.section>
 
@@ -293,40 +264,34 @@ export default function AvisoPrivacidad() {
           </p>
         </motion.section>
 
-        {/* SECCIÓN DE CONSENTIMIENTO (INFORMATIVA) */}
+        {/* SECCIÓN DE CONSENTIMIENTO */}
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="consent-box">
-          <h2 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '0 0 1rem 0', color: '#ffffff' }}>Consentimiento</h2>
+          <h2>Consentimiento</h2>
           <p className="legal-p" style={{ marginBottom: '2.5rem' }}>
             Al interactuar con nuestra plataforma, usted decide sobre el tratamiento de su información conforme a los términos de este Aviso de Privacidad.
           </p>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', textAlign: 'left' }}>
             
-            {/* Definición de Acuerdo */}
             <div style={{ 
               background: 'rgba(117, 191, 64, 0.05)', 
               borderLeft: '4px solid #75bf40', 
               padding: '1.5rem', 
               borderRadius: '0 12px 12px 0' 
             }}>
-              <h3 style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-                Estoy de acuerdo
-              </h3>
+              <h3>Estoy de acuerdo</h3>
               <p style={{ color: '#a1a1aa', margin: 0, fontSize: '0.95rem', lineHeight: 1.6 }}>
                 Consiento que mis datos personales sean utilizados conforme a los términos y condiciones del presente Aviso de Privacidad.
               </p>
             </div>
 
-            {/* Definición de Desacuerdo */}
             <div style={{ 
               background: 'rgba(255, 255, 255, 0.02)', 
               borderLeft: '4px solid rgba(255, 255, 255, 0.2)', 
               padding: '1.5rem', 
               borderRadius: '0 12px 12px 0' 
             }}>
-              <h3 style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-                No estoy de acuerdo
-              </h3>
+              <h3>No estoy de acuerdo</h3>
               <p style={{ color: '#a1a1aa', margin: 0, fontSize: '0.95rem', lineHeight: 1.6 }}>
                 No consiento que mis datos personales sean utilizados conforme a este Aviso de Privacidad.
               </p>

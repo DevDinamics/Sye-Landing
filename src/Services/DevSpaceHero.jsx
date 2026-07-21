@@ -160,9 +160,9 @@ export default function DevSpaceHero() {
           }}
         >
           <img
-            src="/devTransparente.webp"
+            src="/QOPADevSpace_2blanco.png"
             alt="DevSpace Logo"
-            style={{ width: '22px', height: '22px', objectFit: 'contain' }}
+            style={{ width: '52px', height: '22px', objectFit: 'contain' }}
           />
           <span style={{ 
             color: '#d4d4d8', 

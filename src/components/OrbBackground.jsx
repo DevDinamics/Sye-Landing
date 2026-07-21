@@ -128,11 +128,11 @@ export default function OrbBackground({
       return vec4(colorIn.rgb / (a + 1e-5), a);
     }
 
-    // 👇 AQUÍ ESTÁ LA MAGIA DE SYE (Colores pasados al Shader) 👇
-    const vec3 baseColor1 = vec3(0.000, 0.400, 0.800); // Azul eléctrico (RGB 0, 102, 204)
-    const vec3 baseColor2 = vec3(0.000, 0.600, 1.000); // Azul cian (RGB 0, 153, 255)
-    const vec3 baseColor3 = vec3(0.000, 0.200, 0.500);
-    // 👆 -------------------------------------------------------- 👆
+    // 👇 ¡MATEMÁTICA COMPLETAMENTE HOMOLOGADA A TU MARCA! 👇
+    const vec3 baseColor1 = vec3(0.329, 0.353, 0.631); // 🚀 Tu azul #545aa1 exacto
+    const vec3 baseColor2 = vec3(0.450, 0.480, 0.780); // Versión más clara (Brillo/Luz)
+    const vec3 baseColor3 = vec3(0.180, 0.195, 0.380); // Versión más oscura (Sombra/Profundidad)
+    // 👆 ------------------------------------------------
 
     const float innerRadius = 0.6;
     const float noiseScale = 0.65;

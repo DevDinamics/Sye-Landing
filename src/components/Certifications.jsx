@@ -3,16 +3,15 @@ import { motion } from 'framer-motion';
 import LogoLoop from './LogoLoop'; // Asegúrate de que la ruta sea correcta
 
 export default function Certifications() {
-  // Arreglo con tus imágenes de certificación
   const certificationLogos = [
     { src: "/Recurso-65.png", alt: "Certificación CMMI ML5" },
     { src: "/Recurso-66.png", alt: "Certificación CMMI DEV" },
     { src: "/Recurso-67.png", alt: "Certificación ISO 27001" },
     { src: "/Recurso-68.png", alt: "Certificación ISO 37001" },
     { src: "/Recurso-69.png", alt: "Certificación IQNET" },
+    { src: "/ISO_9001-2015.png", alt: "Certificación ISO 9001" },
   ];
 
-  // Variantes para la animación de entrada
   const fadeUpVariant = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
@@ -28,7 +27,18 @@ export default function Certifications() {
       color: '#ffffff'
     }}>
       
-      {/* Resplandor sutil de fondo para darle profundidad premium */}
+      {/* 🚀 ESTILOS INYECTADOS LIMPIOS PARA LOGO BLANCO POR DEFECTO */}
+      <style>{`
+        /* Buscamos las imágenes del bucle que tengan el atributo del logo de ISO 9001 */
+        img[alt="Certificación ISO 9001"] {
+          /* 1. Eliminamos cualquier inversión o cambio de color para que mantenga su blanco original */
+          filter: none !important;
+          /* 2. Aseguramos que renderice normal sobre el fondo oscuro */
+          mix-blend-mode: normal !important; 
+          padding: 4px;
+        }
+      `}</style>
+      
       <div style={{
         position: 'absolute',
         top: '20%',
@@ -43,49 +53,43 @@ export default function Certifications() {
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         
-{/* --- CONTENEDOR DE ENCABEZADO --- */}
-        <div style={{ textSelf: 'center', marginBottom: '4rem' }}>
-          
-          {/* TÍTULO PRINCIPAL */}
+        {/* --- CONTENEDOR DE ENCABEZADO --- */}
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <motion.h2 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUpVariant}
             style={{ 
-              textAlign: 'center', 
               fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', 
               fontWeight: 800, 
               letterSpacing: '-0.03em',
               color: '#ffffff',
-              marginBottom: '0.75rem' // Un espacio corto y elegante antes del subtítulo
+              margin: '0 0 0.75rem 0'
             }}
           >
             Certificaciones
           </motion.h2>
 
-          {/* SUBTÍTULO ESTILIZADO */}
           <motion.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUpVariant}
             style={{ 
-              textAlign: 'center', 
               fontSize: 'clamp(1.1rem, 2vw, 1.3rem)', 
               fontWeight: 400, 
               letterSpacing: '-0.01em',
-              color: '#a1a1aa', // Color gris atenuado para dar contraste y elegancia
-              maxWidth: '600px', // Previene que el texto se estire feo en pantallas gigantes
-              margin: '0 auto' // Centra el bloque de texto
+              color: '#a1a1aa', 
+              maxWidth: '600px', 
+              margin: '0 auto' 
             }}
           >
             Estándares que respaldan nuestra ejecución.
           </motion.p>
-
         </div>
 
-        {/* --- LOGO LOOP (Carrusel infinito) --- */}
+        {/* --- LOGO LOOP (Carrusel infinito) ─── */}
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -94,10 +98,6 @@ export default function Certifications() {
           style={{ 
             marginBottom: '8rem',
             width: '100%',
-            
-            /* 👇 LA MAGIA PARA OCULTAR LOS EXTREMOS 👇 */
-            /* Esto crea un gradiente de transparencia: 
-               Invisible a los lados (0% y 100%) y sólido en el centro (20% a 80%) */
             WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 25%, black 75%, transparent 100%)',
             maskImage: 'linear-gradient(to right, transparent 0%, black 25%, black 75%, transparent 100%)'
           }}
@@ -110,8 +110,6 @@ export default function Certifications() {
             gap={80}
             hoverSpeed={10} 
             scaleOnHover={true}
-            
-            /* 👇 Apagamos el fadeOut nativo porque nuestra máscara de arriba es mucho mejor y respeta el fondo 👇 */
             fadeOut={false} 
             ariaLabel="Certificaciones de SYE"
           />
@@ -125,7 +123,6 @@ export default function Certifications() {
           alignItems: 'center'
         }}>
           
-          {/* Columna Izquierda: Textos */}
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -152,9 +149,9 @@ export default function Certifications() {
               paddingLeft: '1.2rem',
               marginBottom: '2rem'
             }}>
-              <li style={{  paddingLeft: '0.5rem', marginBottom: '0.5rem' }}>Gobierno federal</li>
-              <li style={{  paddingLeft: '0.5rem', marginBottom: '0.5rem' }}>Gobierno estatal</li>
-              <li style={{  paddingLeft: '0.5rem', marginBottom: '0.5rem' }}>Organismos internacionales</li>
+              <li style={{ paddingLeft: '0.5rem', marginBottom: '0.5rem' }}>Gobierno federal</li>
+              <li style={{ paddingLeft: '0.5rem', marginBottom: '0.5rem' }}>Gobierno estatal</li>
+              <li style={{ paddingLeft: '0.5rem', marginBottom: '0.5rem' }}>Organismos internacionales</li>
             </ul>
 
             <p style={{ color: '#a1a1aa', fontSize: '1.05rem', lineHeight: 1.6 }}>
@@ -162,14 +159,12 @@ export default function Certifications() {
             </p>
           </motion.div>
 
-          {/* Columna Derecha: Imagen Premium PRO MAX */}
+          {/* Columna Derecha: Imagen Premium */}
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            whileHover="hover" /* Activador de animaciones al pasar el mouse */
-            
-            // Animación del contenedor principal
+            whileHover="hover" 
             variants={{
               hidden: { opacity: 0, y: 40, scale: 0.95 },
               visible: { 
@@ -179,8 +174,8 @@ export default function Certifications() {
                 transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }
               },
               hover: {
-                y: -8, // Se eleva ligeramente
-                boxShadow: '0 30px 60px rgba(0,0,0,0.6), 0 0 40px rgba(64, 68, 151, 0.15)' // Brillo azul SYE sutil
+                y: -8, 
+                boxShadow: '0 30px 60px rgba(0,0,0,0.6), 0 0 40px rgba(64, 68, 151, 0.15)' 
               }
             }}
             style={{
@@ -191,21 +186,20 @@ export default function Certifications() {
               boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
               aspectRatio: '16/10', 
               backgroundColor: '#0a0a0a',
-              cursor: 'pointer' // Indica que es un elemento interactivo
+              cursor: 'pointer' 
             }}
           >
-            {/* 1. LA IMAGEN (Con efecto Parallax y Zoom dinámico) */}
             <motion.img 
               src="/cyber-security-operations.jpg" 
               alt="Presencia y operaciones" 
               variants={{
-                hidden: { scale: 1.25 }, // Nace super grande
+                hidden: { scale: 1.25 }, 
                 visible: { 
-                  scale: 1, // Se aleja a su tamaño original
+                  scale: 1, 
                   transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] }
                 },
                 hover: { 
-                  scale: 1.06, // Se acerca al pasar el ratón
+                  scale: 1.06, 
                   transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
                 }
               }}
@@ -218,7 +212,6 @@ export default function Certifications() {
               }}
             />
             
-            {/* 2. OVERLAY OSCURO (Para que no pierda la estética dark) */}
             <div style={{
               position: 'absolute',
               inset: 0,
@@ -226,13 +219,12 @@ export default function Certifications() {
               pointerEvents: 'none'
             }} />
 
-            {/* 3. DESTELLO DE CRISTAL (El rayo de luz que cruza en el hover) */}
             <motion.div
               variants={{
                 hidden: { left: '-100%' },
                 visible: { left: '-100%' },
                 hover: { 
-                  left: '200%', // Cruza de izquierda a derecha
+                  left: '200%', 
                   transition: { duration: 0.8, ease: "easeInOut" }
                 }
               }}
@@ -242,13 +234,12 @@ export default function Certifications() {
                 bottom: 0,
                 width: '50%',
                 background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)',
-                transform: 'skewX(-25deg)', // Inclinación del reflejo
+                transform: 'skewX(-25deg)', 
                 pointerEvents: 'none',
                 zIndex: 10
               }}
             />
 
-            {/* 4. BORDE ILUMINADO (Aparece en hover) */}
             <motion.div
               variants={{
                 hidden: { opacity: 0 },
@@ -259,7 +250,7 @@ export default function Certifications() {
                 position: 'absolute',
                 inset: 0,
                 borderRadius: '24px',
-                boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.25)', // Borde interior brillante
+                boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.25)', 
                 pointerEvents: 'none',
                 transition: 'opacity 0.3s ease'
               }}

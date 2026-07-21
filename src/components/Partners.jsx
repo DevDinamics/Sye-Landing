@@ -1,17 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// Datos de las alianzas - RUTAS LOCALES EXACTAS según tu carpeta public/alianzas/
+// Datos de las alianzas
 const partnersLeft = [
   { 
     name: "Google Cloud", 
     logo: "/alianzas/Google_Cloud_logo.svg", 
-    hoverShadow: "rgba(66, 133, 244, 0.8)" 
+    hoverShadow: "rgba(66, 133, 244, 0.8)",
+    lineColor: "#4285F4" 
   },
   { 
     name: "Oracle", 
     logo: "/alianzas/Oracle_logo.svg", 
-    hoverShadow: "rgba(248, 0, 0, 0.8)" 
+    hoverShadow: "rgba(248, 0, 0, 0.8)",
+    lineColor: "#F80000" 
   }
 ];
 
@@ -19,18 +21,19 @@ const partnersRight = [
   { 
     name: "Azure", 
     logo: "/alianzas/Microsoft_Azure.svg", 
-    hoverShadow: "rgba(0, 137, 214, 0.8)" 
+    hoverShadow: "rgba(0, 137, 214, 0.8)",
+    lineColor: "#0089D6" 
   },
   { 
     name: "AWS", 
     logo: "/alianzas/Amazon_Web_Services_Logo.svg", 
-    hoverShadow: "rgba(255, 153, 0, 0.8)" 
+    hoverShadow: "rgba(255, 153, 0, 0.8)",
+    lineColor: "#FF9900" 
   }
 ];
 
 export default function Partners() {
   
-  // 🎬 Variantes para la animación de entrada
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -47,7 +50,6 @@ export default function Partners() {
   return (
     <section className="partners-section">
       
-      {/* ─── ESTILOS RESPONSIVOS Y FORMAS (HEXÁGONOS) ─── */}
       <style>{`
         .partners-section {
           position: relative;
@@ -58,7 +60,6 @@ export default function Partners() {
           overflow: hidden;
         }
 
-        /* Texto superior centrado */
         .partners-header {
           text-align: center;
           max-width: 800px;
@@ -73,9 +74,7 @@ export default function Partners() {
           color: #ffffff;
         }
         
-        .partners-title span {
-          color: #75bf40; /* Verde SYE */
-        }
+        .partners-title span { color: #75bf40; }
 
         .partners-description {
           color: #a1a1aa;
@@ -83,8 +82,8 @@ export default function Partners() {
           font-size: clamp(1rem, 2vw, 1.15rem);
         }
 
-        /* Layout del Panal (Honeycomb) */
         .honeycomb-layout {
+          position: relative; 
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -92,30 +91,32 @@ export default function Partners() {
           gap: 2rem;
           max-width: 1000px;
           margin: 0 auto;
+          z-index: 1;
         }
 
         .side-column {
           display: flex;
           flex-direction: row;
-          gap: 1rem;
+          gap: 1.5rem;
           justify-content: center;
+          z-index: 2;
         }
 
-        /* Forma del Hexágono base */
+        /* 🚀 ESCALA MASIVA: HEXÁGONOS MÁS GRANDES */
         .hex-wrapper {
           position: relative;
-          width: 140px;
-          height: 160px;
-          /* Clip-path para hexágono con punta arriba/abajo */
+          width: 180px;  /* 🚀 Subimos a 180px de ancho */
+          height: 200px; /* 🚀 Subimos a 200px de alto */
           clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
+          z-index: 2; 
         }
 
         .hex-inner {
-          width: calc(100% - 4px); /* Espacio para el borde */
+          width: calc(100% - 4px);
           height: calc(100% - 4px);
           background: #0a0a0a;
           clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
@@ -123,23 +124,41 @@ export default function Partners() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          padding: 1.5rem;
-          gap: 0.8rem;
+          padding: 0.5rem; /* 🚀 Padding casi al mínimo para aprovechar el espacio interno */
+          gap: 0.2rem;
           transition: background 0.3s ease;
         }
 
-        /* Modificador para el logo central (SYE) */
         .hex-wrapper.center-hex {
-          width: 220px;
-          height: 250px;
+          width: 240px;  /* 🚀 Hexágono central inmenso */
+          height: 270px;
           z-index: 10;
         }
         .center-hex .hex-inner {
           background: linear-gradient(145deg, #111 0%, #050505 100%);
         }
 
-        /* Breakpoints para Desktop */
+        .desktop-connections {
+          display: none;
+        }
+        .data-stream {
+          stroke-dasharray: 40 250; 
+          stroke-linecap: round;
+          animation: dataTravel 2.5s linear infinite;
+        }
+        
+        .delay-1 { animation-delay: 0.5s; }
+        .delay-2 { animation-delay: 1.2s; }
+        .delay-3 { animation-delay: 1.8s; }
+
+        @keyframes dataTravel {
+          0% { stroke-dashoffset: 290; }
+          100% { stroke-dashoffset: 0; }
+        }
+
         @media (min-width: 900px) {
+          .desktop-connections { display: block; } 
+          
           .honeycomb-layout {
             flex-direction: row;
             gap: 1.5rem;
@@ -148,7 +167,6 @@ export default function Partners() {
             flex-direction: column;
             gap: 1.5rem;
           }
-          /* Desfase para que embonen visualmente como panal */
           .col-left {
             transform: translateY(20px);
           }
@@ -158,7 +176,6 @@ export default function Partners() {
         }
       `}</style>
 
-      {/* Resplandor verde de fondo */}
       <div style={{
         position: 'absolute',
         top: '60%',
@@ -173,7 +190,6 @@ export default function Partners() {
 
       <div style={{ position: 'relative', zIndex: 1 }}>
         
-        {/* HEADER DE LA SECCIÓN */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -187,7 +203,6 @@ export default function Partners() {
           </p>
         </motion.div>
 
-        {/* LAYOUT DEL PANAL (HONEYCOMB) */}
         <motion.div 
           className="honeycomb-layout"
           variants={containerVariants}
@@ -196,6 +211,36 @@ export default function Partners() {
           viewport={{ once: true, amount: 0.2 }}
         >
           
+          {/* 🚀 LÍNEAS DE CONEXIÓN CON COORDENADAS RECALCULADAS PARA LOS HEXÁGONOS GIGANTES */}
+          <svg
+            className="desktop-connections"
+            viewBox="0 0 800 400"
+            preserveAspectRatio="xMidYMid meet"
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '100%',
+              maxWidth: '800px',
+              height: '400px',
+              zIndex: -1, 
+              pointerEvents: 'none'
+            }}
+          >
+            {/* LÍNEAS ESTRUCTURALES BASE */}
+            <path d="M 166 108 L 400 200" stroke="rgba(255,255,255,0.05)" strokeWidth="2" />
+            <path d="M 166 332 L 400 200" stroke="rgba(255,255,255,0.05)" strokeWidth="2" />
+            <path d="M 634 68 L 400 200" stroke="rgba(255,255,255,0.05)" strokeWidth="2" />
+            <path d="M 634 292 L 400 200" stroke="rgba(255,255,255,0.05)" strokeWidth="2" />
+
+            {/* PARTÍCULAS ANIMADAS */}
+            <path d="M 166 108 L 400 200" stroke={partnersLeft[0].lineColor} strokeWidth="3" className="data-stream" style={{ filter: `drop-shadow(0 0 8px ${partnersLeft[0].lineColor})`}} />
+            <path d="M 166 332 L 400 200" stroke={partnersLeft[1].lineColor} strokeWidth="3" className="data-stream delay-1" style={{ filter: `drop-shadow(0 0 8px ${partnersLeft[1].lineColor})`}} />
+            <path d="M 634 68 L 400 200" stroke={partnersRight[0].lineColor} strokeWidth="3" className="data-stream delay-2" style={{ filter: `drop-shadow(0 0 8px ${partnersRight[0].lineColor})`}} />
+            <path d="M 634 292 L 400 200" stroke={partnersRight[1].lineColor} strokeWidth="3" className="data-stream delay-3" style={{ filter: `drop-shadow(0 0 8px ${partnersRight[1].lineColor})`}} />
+          </svg>
+
           {/* COLUMNA IZQUIERDA */}
           <div className="side-column col-left">
             {partnersLeft.map((partner, i) => (
@@ -203,7 +248,7 @@ export default function Partners() {
             ))}
           </div>
 
-          {/* CENTRO: LOGO SYE - Movimiento sutilizado a 3px vertical */}
+          {/* CENTRO: LOGO SYE GIGANTE */}
           <motion.div 
             variants={itemVariants}
             className="hex-wrapper center-hex"
@@ -213,15 +258,15 @@ export default function Partners() {
             animate="rest"
             variants={{
               rest: { filter: 'drop-shadow(0px 0px 0px rgba(117,191,64,0))' },
-              hover: { filter: 'drop-shadow(0px 0px 30px rgba(117,191,64,0.4))' }
+              hover: { filter: 'drop-shadow(0px 0px 30px rgba(117,191,64,0.6))' }
             }}
           >
             <div className="hex-inner">
               <motion.img 
                 src="/Simbolo_sye_.png" 
                 alt="SYE Software" 
-                style={{ width: '100px', objectFit: 'contain', marginBottom: '10px' }}
-                animate={{ y: [0, -3, 0] }} // Movimiento reducido para máxima sutileza
+                style={{ width: '140px', objectFit: 'contain', marginBottom: '10px' }} /* 🚀 Logo central escalado a 140px */
+                animate={{ y: [0, -3, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               />
             </div>
@@ -241,10 +286,6 @@ export default function Partners() {
   );
 }
 
-/* 
- * Componente interno para cada hexágono de Partner 
- * Esto mantiene el código limpio y repetible 
- */
 /* 
  * Componente interno para cada hexágono de Partner 
  */
@@ -273,25 +314,24 @@ function PartnerHex({ partner, itemVariants }) {
       <div className="hex-inner">
         <motion.div
           variants={{
-            /* 🚀 FIX: Quitamos el invert y el resplandor blanco feo. 
-               Solo lo dejamos en escala de grises y un poco transparente en reposo */
             rest: { 
               filter: "grayscale(100%) opacity(60%)", 
               scale: 0.9 
             },
-            /* 🚀 En el hover: Colores HD originales y un resplandor del color de la marca */
             hover: { 
               filter: `grayscale(0%) opacity(100%) drop-shadow(0px 5px 15px ${partner.hoverShadow})`, 
               scale: 1.05 
             }
           }}
           transition={{ duration: 0.3 }}
-          style={{ height: "40px", display: "flex", alignItems: "center", justifyContent: "center", width: "100%" }}
+          /* 🚀 FIX DE LOGOS MAX-SIZE: Contenedor sube a 90px de alto */
+          style={{ height: "90px", display: "flex", alignItems: "center", justifyContent: "center", width: "100%" }} 
         >
           <img 
             src={partner.logo} 
             alt={partner.name} 
-            style={{ maxHeight: "100%", maxWidth: "80px", objectFit: "contain" }} 
+            /* 🚀 FIX DE LOGOS MAX-SIZE: Ancho de la imagen liberado hasta 140px */
+            style={{ maxHeight: "100%", maxWidth: "140px", objectFit: "contain" }} 
           />
         </motion.div>
         
@@ -300,7 +340,7 @@ function PartnerHex({ partner, itemVariants }) {
             rest: { color: "#71717a" },
             hover: { color: "#ffffff" }
           }}
-          style={{ fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.02em", textAlign: 'center' }}
+          style={{ fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.02em", textAlign: 'center' }}
         >
           {partner.name}
         </motion.span>

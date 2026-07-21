@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Confirmación de Contacto - SYE</title>
+    <style type="text/css">
+        /* Reset básico para clientes de correo */
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+        table { border-collapse: collapse !important; }
+        body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; font-family: 'Inter', -apple-system, BlinkMacSystemFont, Arial, sans-serif; background-color: #f4f4f5; }
+        
+        /* Variables y clases base (Modo Claro) */
+        .wrapper { background-color: #f4f4f5; padding: 40px 20px; }
+        .main-card { background-color: #ffffff; border-radius: 12px; overflow: hidden; max-width: 600px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .header { background-color: #050505; padding: 40px 20px; text-align: center; }
+        .header h1 { color: #ffffff; margin: 20px 0 0 0; font-size: 24px; font-weight: 700; font-family: 'Montserrat', Arial, sans-serif; }
+        .content { padding: 40px 30px; color: #3f3f46; line-height: 1.6; font-size: 16px; }
+        .highlight-box { background-color: #fafafa; border: 1px solid #e4e4e7; border-radius: 8px; padding: 20px; text-align: center; margin: 30px 0; }
+        .highlight-text { font-weight: 600; color: #18181b; }
+        .footer { background-color: #f4f4f5; padding: 20px; text-align: center; color: #a1a1aa; font-size: 13px; }
+        
+        /* Soporte para Dark Mode en celulares */
+        @media (prefers-color-scheme: dark) {
+            body, .wrapper, .footer { background-color: #121212 !important; }
+            .main-card { background-color: #1e1e1e !important; box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important; }
+            .header { background-color: #000000 !important; border-bottom: 1px solid #333333; }
+            .content { color: #d4d4d8 !important; }
+            .highlight-box { background-color: #27272a !important; border-color: #3f3f46 !important; }
+            .highlight-text { color: #ffffff !important; }
+            .footer-text { color: #71717a !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <table class="main-card" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="header">
+                    <!-- Placeholder para el logo de SYE. En el código final, cambia este src por la URL absoluta de tu logo -->
+                    <img src="https://via.placeholder.com/150x50/050505/ffffff?text=SYE+SOFTWARE" alt="SYE Software" width="120" style="display: block; margin: 0 auto; max-width: 100%;">
+                    <h1>¡Hola, {{nombre}}!</h1>
+                </td>
+            </tr>
+            <tr>
+                <td class="content">
+                    <p style="margin-top: 0;">Queríamos confirmarte que <strong>hemos recibido tu mensaje exitosamente</strong> y ya está en manos de nuestro equipo.</p>
+                    
+                    <p>Has dado el primer paso para impulsar la transformación digital de tu proyecto. Nuestros expertos en tecnología revisarán los detalles que nos compartiste y se pondrán en contacto contigo muy pronto para explorar cómo podemos crear esa solución increíble que tienes en mente.</p>
+                    
+                    <div class="highlight-box">
+                        <p class="highlight-text" style="margin: 0;">¡Gracias por tu interés en innovar con <span style="color: #75bf40;">SYE Software</span>!</p>
+                    </div>
+                    
+                    <p style="margin-bottom: 5px; color: #71717a;">Atentamente,</p>
+                    <p style="margin-top: 0; font-weight: bold; color: #18181b;" class="highlight-text">El equipo de SYE Software</p>
+                </td>
+            </tr>
+        </table>
+        
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px; margin: 0 auto;">
+            <tr>
+                <td class="footer">
+                    <p class="footer-text" style="margin: 0;">Este es un mensaje generado automáticamente.<br>Por favor, <strong>no respondas</strong> a este correo.</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

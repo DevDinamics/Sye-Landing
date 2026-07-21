@@ -50,7 +50,7 @@ export default function NubeFeatures() {
               color: '#ffffff'
             }}
           >
-            Con Nube, las instituciones <span style={{ color: '#404497' }}>logran:</span>
+            Con Nube, las instituciones <span style={{ color: '#bd0374' }}>logran:</span>
           </motion.h2>
 
           <motion.ul 
@@ -76,7 +76,7 @@ export default function NubeFeatures() {
                   fontWeight: 500
                 }}
               >
-                <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#404497', flexShrink: 0 }} />
+                <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#bd0374', flexShrink: 0 }} />
                 {item}
               </motion.li>
             ))}
@@ -147,9 +147,14 @@ export default function NubeFeatures() {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {beneficiosList.map((beneficio, index) => (
                 <li key={index} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', color: '#a1a1aa', fontSize: '1rem' }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#75bf40" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  {/* 🚀 Cambiado: Círculo minimalista verde SYE en perfecta alineación con el texto */}
+                  <svg 
+                    style={{ flexShrink: 0, marginTop: '6px' }} 
+                    width="8" 
+                    height="8" 
+                    viewBox="0 0 10 10"
+                  >
+                    <circle cx="5" cy="5" r="5" fill="#75bf40" />
                   </svg>
                   {beneficio}
                 </li>

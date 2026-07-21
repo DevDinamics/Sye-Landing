@@ -10,10 +10,10 @@ export default function QopaFeatures() {
   ];
 
   const beneficiosList = [
-    "IA con supervisión humana y control institucional",
-    "Decisiones mejor informadas",
-    "Resultados medibles y trazables",
-    "Soluciones escalables y seguras"
+    "IA con supervisión humana y control institucional.",
+    "Decisiones mejor informadas.",
+    "Resultados medibles y trazables.",
+    "Soluciones escalables y seguras."
   ];
 
   return (
@@ -137,7 +137,7 @@ export default function QopaFeatures() {
             className="qopa-title"
           >
             QOPA permite la <br />
-            <span style={{ color: '#75bf40' }}>transformación total.</span>
+            <span style={{ color: '#404497' }}>transformación total.</span>
           </motion.h2>
 
           <motion.ul 
@@ -229,10 +229,14 @@ export default function QopaFeatures() {
                     lineHeight: 1.6
                   }}
                 >
-                  {/* Check Icon en verde SYE exacto */}
-                  <svg style={{ flexShrink: 0, marginTop: '2px' }} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#75bf40" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  {/* 🚀 Cambiado: Círculo minimalista verde SYE en perfecta alineación con el texto */}
+                  <svg 
+                    style={{ flexShrink: 0, marginTop: '6px' }} 
+                    width="8" 
+                    height="8" 
+                    viewBox="0 0 10 10"
+                  >
+                    <circle cx="5" cy="5" r="5" fill="#75bf40" />
                   </svg>
                   {beneficio}
                 </li>

@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ContactForm() {
   const [privacyChecked, setPrivacyChecked] = useState(false);
   const [showPrivacyError, setShowPrivacyError] = useState(false); 
   const [status, setStatus] = useState('idle'); 
+  
+  // Referencias para capturar los datos sin forzar re-renders constantes
+  const formRef = useRef();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); 
     
     if (!privacyChecked) {
@@ -17,14 +20,42 @@ export default function ContactForm() {
     setShowPrivacyError(false);
     setStatus('loading');
 
-    setTimeout(() => {
-      setStatus('success');
-      setTimeout(() => {
-        setStatus('idle');
-        setPrivacyChecked(false);
-        e.target.reset(); 
-      }, 3000);
-    }, 2500);
+    // 1. Obtener los datos del formulario
+    const formData = new FormData(formRef.current);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      // 2. Aquí ejecutarías reCAPTCHA v3 para obtener el token
+      // const recaptchaToken = await window.grecaptcha.execute('TU_CLAVE_PUBLICA', {action: 'submit'});
+      // data.recaptchaToken = recaptchaToken; // Se envía al backend para validar
+
+      // 3. Petición POST al endpoint PHP
+      const response = await fetch('/api/enviar_correo.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setStatus('success');
+        setTimeout(() => {
+          setStatus('idle');
+          setPrivacyChecked(false);
+          formRef.current.reset(); 
+        }, 3000);
+      } else {
+        throw new Error(result.message || 'Error en el servidor');
+      }
+
+    } catch (error) {
+      console.error("Fallo al enviar:", error);
+      setStatus('idle');
+      alert("Hubo un problema al enviar tu mensaje. Intenta de nuevo.");
+    }
   };
 
   return (
@@ -32,7 +63,8 @@ export default function ContactForm() {
       backgroundColor: '#050505',
       color: '#ffffff',
       minHeight: '100vh',
-      fontFamily: "-apple-system, BlinkMacSystemFont, 'Inter', sans-serif",
+      // 🚀 FUENTE SECUNDARIA A NIVEL GLOBAL (Para textos de lectura, inputs y descripciones)
+      fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
       display: 'flex',
       justifyContent: 'center',
     }}>
@@ -52,8 +84,10 @@ export default function ContactForm() {
           className="contact-title-block"
         >
           <h1 style={{
+            // 🚀 FUENTE PRIMARIA (Títulos de alto impacto)
+            fontFamily: "'Montserrat', sans-serif",
             fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
-            fontWeight: 500,
+            fontWeight: 700, // Aumenté un poco el peso para resaltar la fuente primaria
             letterSpacing: '-0.02em',
             lineHeight: 1.2,
             margin: '0 0 2rem 0',
@@ -64,7 +98,6 @@ export default function ContactForm() {
           </h1>
         </motion.div>
 
-
         {/* ─── BLOQUE 2: EL FORMULARIO MINIMALISTA ─── */}
         <motion.div 
           initial={{ opacity: 0, x: 30 }}
@@ -73,8 +106,10 @@ export default function ContactForm() {
           className="contact-form-block"
         >
           <h2 style={{
+            // 🚀 FUENTE PRIMARIA (Encabezados de sección)
+            fontFamily: "'Montserrat', sans-serif",
             fontSize: 'clamp(3rem, 6vw, 4.5rem)',
-            fontWeight: 500,
+            fontWeight: 700,
             letterSpacing: '-0.03em',
             margin: '0 0 4rem 0',
             color: '#ffffff'
@@ -82,27 +117,34 @@ export default function ContactForm() {
             Contáctanos
           </h2>
 
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+          {/* FALTABA AGREGAR ref={formRef} AQUÍ 👇 */}
+          <form ref={formRef} onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
             
             <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
               <div style={{ flex: '1 1 200px', display: 'flex', flexDirection: 'column' }}>
-                <input type="text" placeholder="Nombre" required style={inputStyle} />
+                {/* FALTABA name="nombre" */}
+                <input type="text" name="nombre" placeholder="Nombre" required style={inputStyle} />
               </div>
               <div style={{ flex: '1 1 200px', display: 'flex', flexDirection: 'column' }}>
-                <input type="text" placeholder="Apellido" required style={inputStyle} />
+                {/* FALTABA name="apellido" */}
+                <input type="text" name="apellido" placeholder="Apellido" required style={inputStyle} />
               </div>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <input type="email" placeholder="Correo electrónico" required style={inputStyle} />
+              {/* FALTABA name="email" */}
+              <input type="email" name="email" placeholder="Correo electrónico" required style={inputStyle} />
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <input type="text" placeholder="Empresa o Institución" style={inputStyle} />
+              {/* FALTABA name="empresa" */}
+              <input type="text" name="empresa" placeholder="Empresa o Institución" style={inputStyle} />
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column' }}>
+              {/* FALTABA name="mensaje" */}
               <textarea 
+                name="mensaje"
                 placeholder="Escribe tu mensaje..." 
                 rows="1"
                 required
@@ -114,7 +156,7 @@ export default function ContactForm() {
               />
             </div>
 
-            {/* Contenedor del Checkbox y su Mensaje de Error */}
+            {/* Contenedor del Checkbox y su Mensaje de Error (Se queda igual, no necesita name porque lo validas en el state) */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               <label style={{ display: 'flex', alignItems: 'center', gap: '1rem', cursor: 'pointer', color: '#a1a1aa', fontSize: '0.9rem', userSelect: 'none' }}>
                 <div style={{ position: 'relative', width: '22px', height: '22px' }}>
@@ -164,7 +206,7 @@ export default function ContactForm() {
               </AnimatePresence>
             </div>
 
-            {/* Botón de Enviar */}
+            {/* Botón de Enviar (Se queda exactamente igual) */}
             <div>
               <motion.button
                 type="submit"
@@ -176,11 +218,12 @@ export default function ContactForm() {
                 whileHover={status === 'idle' ? { scale: 1.02 } : {}}
                 whileTap={status === 'idle' ? { scale: 0.98 } : {}}
                 style={{
+                  fontFamily: "'Montserrat', sans-serif",
                   padding: '16px 40px',
                   borderRadius: '12px',
                   border: 'none',
                   fontSize: '1.1rem',
-                  fontWeight: 600,
+                  fontWeight: 700,
                   cursor: status === 'idle' ? 'pointer' : 'default',
                   marginTop: '1rem',
                   boxShadow: status === 'idle' ? '0 4px 14px rgba(255, 255, 255, 0.1)' : 'none',
@@ -246,7 +289,7 @@ export default function ContactForm() {
           </form>
         </motion.div>
 
-        {/* ─── BLOQUE 3: LA INFO DE CONTACTO (Separada a nivel raíz) ─── */}
+        {/* ─── BLOQUE 3: LA INFO DE CONTACTO ─── */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -274,16 +317,16 @@ export default function ContactForm() {
           </p>
 
           <div style={{ display: 'flex', gap: '1.5rem', color: '#d4d4d8', fontSize: '0.9rem' }}>
-            <a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>LinkedIn</a>
-            <a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>Instagram</a>
-            <a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>Facebook</a>
-            <a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>X</a>
+            {/* Las redes sociales heredan la fuente secundaria (Inter) */}
+            <a href="https://mx.linkedin.com/company/sye-software" style={{ color: 'inherit', textDecoration: 'none' }}>LinkedIn</a>
+            <a href="https://www.instagram.com/syesoftware/" style={{ color: 'inherit', textDecoration: 'none' }}>Instagram</a>
+            <a href="https://www.facebook.com/SYESoftware/" style={{ color: 'inherit', textDecoration: 'none' }}>Facebook</a>
+            <a href="https://x.com/SYESoftware_" style={{ color: 'inherit', textDecoration: 'none' }}>X</a>
           </div>
         </motion.div>
 
       </div>
 
-      {/* Estilos responsivos de ordenamiento total */}
       <style>{`
         .contact-section {
           padding: 8rem 2rem 4rem 2rem;
@@ -299,7 +342,7 @@ export default function ContactForm() {
           box-shadow: none !important;
         }
         
-        /* ALINEACIÓN DE ESCRITORIO BASE (2 Columnas reales) */
+        /* ALINEACIÓN DE ESCRITORIO BASE */
         @media (min-width: 769px) {
           .contact-grid-container {
             grid-template-areas: 
@@ -321,7 +364,6 @@ export default function ContactForm() {
             flex-direction: column !important;
             gap: 3rem !important;
           }
-          /* El orden matemático exacto en móviles */
           .contact-title-block {
             order: 1 !important;
           }
@@ -332,7 +374,7 @@ export default function ContactForm() {
             order: 3 !important;
             margin-top: 1rem !important;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.08); /* Una línea sutil divisoria para dar estructura */
+            border-top: 1px solid rgba(255, 255, 255, 0.08); 
           }
         }
         
@@ -344,6 +386,7 @@ export default function ContactForm() {
   );
 }
 
+// Estilos del Input (Heredan automáticamente la fuente secundaria del contenedor padre)
 const inputStyle = {
   backgroundColor: 'transparent',
   border: 'none',
@@ -354,4 +397,5 @@ const inputStyle = {
   outline: 'none',
   width: '100%',
   transition: 'border-color 0.3s ease',
+  fontFamily: 'inherit', // 🚀 Aseguramos que herede "Inter"
 };

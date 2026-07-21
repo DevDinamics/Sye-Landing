@@ -140,7 +140,7 @@ Su enfoque combina automatización, interacción conversacional y análisis en t
     pointerEvents: "auto", 
   }}
 >
-  Conocer Doma
+  Conocer DOMA
 </a>
       </div>
     </section>

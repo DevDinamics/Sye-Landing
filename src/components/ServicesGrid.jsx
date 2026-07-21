@@ -54,8 +54,8 @@ export default function ServicesGrid() {
       title: 'DevSpace',
       path: '/devspace', // <-- Ruta vinculada al Navbar
       description: 'DevSpace es una solución tecnológica basada en inteligencia artificial que transforma la forma en que se construye...',
-      icon: <img src="/devTransparente.webp" alt="DevSpace" style={{ width: '22px', height: '22px', objectFit: 'contain' }} />,
-      bgImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800',
+      icon: <img src="/QOPADevSpace_2blanco.png" alt="DevSpace" style={{ width: '42px', height: '22px', objectFit: 'contain' }} />,
+      bgImage: '/QOPADevSpace_2blanco.png',
     }
   ];
 

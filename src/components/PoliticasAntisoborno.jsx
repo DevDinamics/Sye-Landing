@@ -141,35 +141,21 @@ export default function PoliticasAntisoborno() {
       )
     },
     {
-      title: "Compromisos",
-      content: (
-        <>
-          <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.8rem', margin: 0 }}>
-            <li>
-              Es responsabilidad del personal y socios de negocio cumplir los requisitos del Sistema de Gestión Antisoborno.
-            </li>
-            <li>
-              Apegarnos a las leyes aplicables a nuestra organización identificadas en la Tabla de Requisitos Legales.
-            </li>
-            <li>
-              Realizar todas las negociaciones, compras y transacciones financieras con apego a nuestros procesos internos y conservando todos los registros de las mismas para ser revisados en caso de auditoría.
-            </li>
-            <li>
-              Asegurarnos de que los pagos que realicemos o que se realicen por nuestra cuenta sean exclusivamente una remuneración por servicios efectivamente prestados a nuestra compañía o en nombre de ella.
-            </li>
-            <li>
-              Adoptar los controles internos y denunciar, si es necesario ante las autoridades correspondientes aquellos casos en los que algún empleado, o socio de negocio incurra en un acto de corrupción.
-            </li>
-            <li>
-              Promover las mejores prácticas para prevenir y luchar contra el soborno y la corrupción a lo largo de nuestra cadena de valor, capacitar al personal sobre las medidas preventivas y realizar campañas de difusión.
-            </li>
-            <li>
-              Fortalecer la eficacia del sistema de gestión compartiendo sugerencias que nos lleven a la mejora continua del mismo.
-            </li>
-          </ul>
-        </>
-      )
-    },
+  title: "Compromisos",
+  content: (
+    <>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem', margin: 0 }}>
+        <p style={{ color: '#a1a1aa', fontSize: '1.05rem', lineHeight: 1.7, margin: 0 }}>
+          La organización define como <strong>'Puestos Clave'</strong> a aquellos roles con alta exposición a riesgos de corrupción, gestión financiera o relación con terceros interesados, con toma de decisión que puede influir en decisiones que podrían ser vulnerables a prácticas de soborno. Para estos perfiles identificados en <a href="https://qualtopgroup.atlassian.net/wiki/spaces/BDPYAS/pages/5967414001/Pol+tica+de+Control+de+Expedientes" style={{ color: '#75bf40', fontWeight: 600, textDecoration: 'none' }}>la Política de Control de Expedientes</a>, la <strong>Debida Diligencia</strong> es obligatoria y reforzada, consistiendo en la realización de un Estudio Socioeconómico y verificaciones de antecedentes  (ver <a href="https://qualtopgroup.atlassian.net/wiki/spaces/BDPYAS/pages/5967414231/Reclutamiento+y+Selecci+n" style={{ color: '#75bf40', fontWeight: 600, textDecoration: 'none' }}>Proceso de Reclutamiento y Selección</a>).
+        </p>
+        
+        <p style={{ color: '#a1a1aa', fontSize: '1.05rem', lineHeight: 1.7, margin: 0 }}>
+          La <strong>Declaración de Cumplimiento Antisoborno</strong> es un requisito obligatorio para la totalidad de los colaboradores de la organización sin excepción. Deberá presentarse en el momento de la contratación, al menos una vez al año y, en caso de cambio de puesto, deberá renovarse.
+        </p>
+      </div>
+    </>
+  )
+},
     {
       title: "Regalos",
       content: (
@@ -360,7 +346,7 @@ export default function PoliticasAntisoborno() {
         </>
       )
     },
-    {
+    /* {
       title: "Puestos Claves",
       content: (
         <>
@@ -372,10 +358,7 @@ export default function PoliticasAntisoborno() {
             Puestos Administrativos:
           </p>
 
-          {/* 
-            ✅ TRUCO PRO: Usamos columnCount para distribuir la lista de puestos en 2 columnas 
-            en pantallas grandes. En móviles el CSS responsivo general lo adaptará.
-          */}
+          
           <ul style={{ 
             listStyleType: 'disc', 
             paddingLeft: '1.5rem', 
@@ -411,7 +394,7 @@ export default function PoliticasAntisoborno() {
             <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Gerente de Cuentas por Cobrar</li>
             <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Gerente de la PMO</li>
             <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Gerente de Preventa Cloud</li>
-            {/* 💡 Por cierto, aquí andan los puestos de Gerente y Analista de Infraestructura jeje */}
+            
             <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Gerente de Infraestructura y Soporte TI</li>
             <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Analista de Infraestructura y Soporte TI</li>
             <li style={{ marginBottom: '0.6rem', breakInside: 'avoid' }}>Gerente de Administración de Personal</li>
@@ -423,7 +406,7 @@ export default function PoliticasAntisoborno() {
           </ul>
         </>
       )
-    },
+    }, */
     {
       title: "Puestos de Operaciones / Proyecto:",
       content: (
